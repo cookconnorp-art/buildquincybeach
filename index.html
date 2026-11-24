@@ -352,8 +352,10 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
 .runoff svg{display:block;width:100%;height:auto;background:#cfdad6}
 .runoff-bar{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;padding:.8rem 1rem;border-top:1px solid var(--line)}
 .runoff-steps{display:flex;flex-wrap:wrap;gap:.35rem;list-style:none;margin:0;padding:0;flex:1 1 auto}
-.runoff-steps li{font:500 .72rem/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;padding:.4rem .55rem;border:1px solid var(--line);color:var(--muted);transition:background .3s,color .3s,border-color .3s}
-.runoff-steps li.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.runoff-steps li{display:flex}
+.runoff-steps button{font:500 .72rem/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;padding:.4rem .55rem;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.runoff-steps button:hover{border-color:var(--ink);color:var(--ink)}
+.runoff-steps li.on button{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .runoff-cap{flex:1 1 100%;margin:0;font-size:.95rem;min-height:2.6em}
 .runoff-btn{font:600 .75rem/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;padding:.5rem .8rem;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
 .runoff-btn:hover{background:var(--ink);color:var(--bg)}
@@ -616,6 +618,10 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
             <g id="ro-smoke" fill="#dfe6e4"><circle cx="673" cy="214" r="4"/><circle cx="678" cy="205" r="5"/><circle cx="684" cy="195" r="6"/></g>
           </g>
           <g id="ro-plants"></g>
+          <g id="ro-wlab" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-weight="600" fill="#f4fbff" stroke="#1f4f60" stroke-width="3" paint-order="stroke">
+            <text x="640" y="252" font-size="10" letter-spacing="1">KEWEENAW WATERWAY</text>
+            <text x="640" y="264" font-size="8">protected by federal &amp; state law</text>
+          </g>
           <path id="ro-run" d="M415 251 C450 254 480 252 505 254 C530 257 548 266 568 280" fill="none" stroke="url(#ro-oil)" stroke-width="7" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
           <path d="M120 252 C150 210 190 150 245 118 C270 104 292 106 312 124 C350 158 392 214 430 252Z" fill="url(#ro-pile)"/>
           <path d="M170 252 C200 222 215 196 238 186 L262 196 C300 210 330 238 350 252Z" fill="#0e1110" opacity=".55"/>
@@ -675,7 +681,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
         <rect id="ro-fade" width="800" height="360" fill="#cfdad6" opacity="0" pointer-events="none"/>
       </svg>
       <div class="runoff-bar">
-        <ol class="runoff-steps" aria-hidden="true"><li>Rain</li><li>Snow</li><li>Freeze &amp; thaw</li><li>Metals exposed</li><li>Groundwater &amp; runoff</li><li>Plants, fish &amp; people</li></ol>
+        <ol class="runoff-steps" aria-label="Jump to a stage"><li><button type="button" data-t="0.9">Rain</button></li><li><button type="button" data-t="5.5">Snow</button></li><li><button type="button" data-t="10.6">Freeze &amp; thaw</button></li><li><button type="button" data-t="18">Metals exposed</button></li><li><button type="button" data-t="28.5">Groundwater &amp; runoff</button></li><li><button type="button" data-t="38.6">Plants, fish &amp; people</button></li></ol>
         <button type="button" class="runoff-btn" id="runoff-btn" aria-pressed="false">Pause</button>
         <p class="runoff-cap" id="runoff-cap">Rain soaks into the pile and starts to pull metals out of the rock.</p>
       </div>
@@ -1344,6 +1350,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
     $('ro-shanty').setAttribute('opacity',sh.toFixed(2));
     $('ro-smoke').setAttribute('transform','translate(0,'+(-(t*6)%8).toFixed(1)+')');
     $('ro-person').setAttribute('opacity',(1-sh).toFixed(2));
+    $('ro-wlab').setAttribute('opacity',(1-r(5.6,6.3,t)*(1-r(10.4,11,t))).toFixed(2));
     // freeze-thaw on one small rock
     var dr=r(13.4,14.3,t); $('ro-drop').setAttribute('cy',(-14+dr*12).toFixed(2)); $('ro-drop').setAttribute('opacity',dr>0&&dr<1?1:0);
     var wet=ez(r(14.2,15,t)), frz=ez(r(15.4,16.4,t)), spl=ez(r(16.7,17.6,t));
@@ -1430,6 +1437,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
   function kick(){ if(!raf&&playing&&visible) raf=requestAnimationFrame(loop) }
   function setBtn(){btn.textContent=playing?'Pause':'Play';btn.setAttribute('aria-pressed',playing?'false':'true')}
   btn.addEventListener('click',function(){playing=!playing;setBtn();if(playing)kick();});
+  fig.querySelectorAll('.runoff-steps button').forEach(function(b){ b.addEventListener('click',function(){ t=+b.dataset.t; last=null; frame(t); kick(); }); });
   setBtn(); frame(t);
   window.__runoff=function(x){t=x;frame(x)};
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){inView=es[0].isIntersecting;visible=inView&&!document.hidden;kick()},{threshold:.15}).observe(fig)}else{inView=visible=true;kick()}
