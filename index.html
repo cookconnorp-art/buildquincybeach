@@ -566,7 +566,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
 
     <figure class="runoff" id="runoff" aria-label="Animation: how rain, snow and freeze-thaw wash metals from the slag pile into the water">
       <svg viewBox="0 0 800 360" role="img" aria-labelledby="runoff-t">
-        <title id="runoff-t">A black slag pile beside the water goes through rain, snow and thaw. The rock cracks, rain washes metal-laden runoff into the water, fish die and a person fishing gets sick.</title>
+        <title id="runoff-t">A black slag pile beside the water goes through rain, snow and thaw. Up close, ice splits a small rock and exposes lead, copper and other metals, which raindrops dissolve and carry into the ground, the groundwater and the bay. Plants and fish die and a person fishing gets sick.</title>
         <defs>
           <linearGradient id="ro-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9cbc7"/><stop offset="1" stop-color="#e4ebe8"/></linearGradient>
           <linearGradient id="ro-pile" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b413f"/><stop offset=".45" stop-color="#151918"/><stop offset="1" stop-color="#262b29"/></linearGradient>
@@ -574,6 +574,8 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
           <radialGradient id="ro-plume"><stop offset="0" stop-color="#8f5e25" stop-opacity=".85"/><stop offset=".6" stop-color="#6d7f3c" stop-opacity=".5"/><stop offset="1" stop-color="#6d7f3c" stop-opacity="0"/></radialGradient>
           <clipPath id="ro-gwclip"><rect id="ro-gwr" x="140" y="300" width="0" height="60"/></clipPath>
           <linearGradient id="ro-wf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5f727a"/><stop offset=".4" stop-color="#c9d5d9"/><stop offset="1" stop-color="#f3f6f7"/></linearGradient>
+          <linearGradient id="ro-msky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b4c6c2"/><stop offset="1" stop-color="#dde6e3"/></linearGradient>
+          <linearGradient id="ro-mrock" x1="0" y1="0" x2=".6" y2="1"><stop offset="0" stop-color="#3a4240"/><stop offset=".5" stop-color="#1b201f"/><stop offset="1" stop-color="#121514"/></linearGradient>
           <clipPath id="ro-water"><rect x="540" y="272" width="200" height="88"/></clipPath>
         </defs>
         <g id="ro-scene">
@@ -593,9 +595,15 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
           <path d="M0 322 C120 316 260 326 400 318 C470 314 520 320 562 316 V360 H0Z" fill="#4b6f7e" opacity=".75"/>
           <path id="ro-gwc" d="M0 322 C120 316 260 326 400 318 C470 314 520 320 562 316 V360 H0Z" fill="#8a5d2a" opacity="0" clip-path="url(#ro-gwclip)"/>
           <text x="20" y="346" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" letter-spacing="1.5" fill="#dfeaee" opacity=".85">GROUNDWATER</text>
-          <g id="ro-seep" fill="none" stroke="#8f5e25" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 5" opacity="0">
-            <path d="M170 256 C176 274 164 292 172 318"/><path d="M230 256 C222 276 238 296 228 318"/><path d="M300 256 C306 278 294 298 304 318"/><path d="M370 256 C362 276 376 296 366 318"/><path d="M420 256 C428 276 416 298 426 318"/>
+          <g id="ro-routes" opacity="0" fill="none" stroke="none">
+            <path d="M170 254 C176 274 164 292 172 320 C230 334 420 336 560 330 C585 326 610 316 640 312"/>
+            <path d="M232 254 C224 276 240 296 230 321 C300 334 450 334 560 329 C585 324 615 318 650 318"/>
+            <path d="M300 254 C306 278 294 298 304 320 C380 332 480 332 560 328 C590 324 620 330 660 332"/>
+            <path d="M368 254 C360 276 374 296 366 319 C430 330 500 330 560 327 C590 320 625 312 655 300"/>
+            <path d="M425 254 C432 276 420 298 430 318 C480 328 520 328 560 326 C585 322 600 326 630 340"/>
+            <path d="M420 250 C450 254 480 252 505 254 C530 257 548 266 568 280 C590 292 615 300 645 304"/>
           </g>
+          <g id="ro-parts"></g>
           <path d="M728 360 V274 C742 266 760 263 800 263 V360Z" fill="#6f7a52"/>
           <rect id="ro-ice" x="557" y="270" width="173" height="11" fill="#e3f1f5" stroke="#ffffff" stroke-width="1" opacity="0"/>
           <g id="ro-shanty" opacity="0">
@@ -620,14 +628,14 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
             <path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M372 196 L386 214 L396 232"/>
           </g>
           <g id="ro-rock" transform="translate(445,246)">
-            <polygon id="ro-rA" points="-8,4 -9,-1 -5,-5 -1,-6 0,-2 -1,4" fill="#1f2423" stroke="#4a524f" stroke-width=".25"/>
-            <g id="ro-rB"><polygon points="-1,-6 4,-6 8,-2 3,0 0,-2" fill="#262c2a" stroke="#4a524f" stroke-width=".25"/><g id="ro-met" opacity="0"><circle class="ro-fl" cx="1.4" cy="-4.6" r=".38" fill="#a3acbd" stroke="#fff" stroke-width=".06"/><text x="1.4" y="-5.05" font-size=".62" font-weight="700" font-family="IBM Plex Mono, monospace" fill="#fff" stroke="#111" stroke-width=".14" paint-order="stroke" text-anchor="middle">Pb</text><circle class="ro-fl" cx="3.6" cy="-3.4" r=".38" fill="#d97a32" stroke="#fff" stroke-width=".06"/><text x="3.6" y="-3.85" font-size=".62" font-weight="700" font-family="IBM Plex Mono, monospace" fill="#fff" stroke="#111" stroke-width=".14" paint-order="stroke" text-anchor="middle">Cu</text><circle class="ro-fl" cx="5.6" cy="-2.6" r=".38" fill="#d9c25a" stroke="#fff" stroke-width=".06"/><text x="5.8" y="-3.0500000000000003" font-size=".62" font-weight="700" font-family="IBM Plex Mono, monospace" fill="#fff" stroke="#111" stroke-width=".14" paint-order="stroke" text-anchor="middle">As</text><circle class="ro-fl" cx="2.4" cy="-1.8" r=".38" fill="#c7d2d8" stroke="#fff" stroke-width=".06"/><text x="2.4" y="-2.25" font-size=".62" font-weight="700" font-family="IBM Plex Mono, monospace" fill="#fff" stroke="#111" stroke-width=".14" paint-order="stroke" text-anchor="middle">Zn</text><circle class="ro-fl" cx="4.6" cy="-5.0" r=".38" fill="#e0905a" stroke="#fff" stroke-width=".06"/><text x="4.8999999999999995" y="-5.45" font-size=".62" font-weight="700" font-family="IBM Plex Mono, monospace" fill="#fff" stroke="#111" stroke-width=".14" paint-order="stroke" text-anchor="middle">Cu</text><circle class="ro-fl" cx="6.6" cy="-1.4" r=".38" fill="#8fa0b5" stroke="#fff" stroke-width=".06"/><text x="6.8999999999999995" y="-1.8499999999999999" font-size=".62" font-weight="700" font-family="IBM Plex Mono, monospace" fill="#fff" stroke="#111" stroke-width=".14" paint-order="stroke" text-anchor="middle">Cd</text><g id="ro-mrain" stroke="#3f93bd" stroke-width=".16" stroke-linecap="round"></g><g id="ro-leach" fill="#9a8a3c"></g></g></g>
-            <text id="ro-metT" x="4.5" y="-9.3" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size=".7" font-weight="600" fill="#16201d" opacity="0">metals now exposed to rain</text>
-            <polygon id="ro-rC" points="0,-2 3,0 8,-2 9,3 -1,4" fill="#1a1f1e" stroke="#4a524f" stroke-width=".25"/>
-            <path id="ro-rW" d="M-1,-6 L0,-2 L-1,4 M0,-2 L3,0 L8,-2" fill="none" stroke="#5fb4d6" stroke-width="0" stroke-linejoin="round"/>
-            <g id="ro-rbits" fill="#3a4240"><circle cx="0" cy="-3" r=".3"/><circle cx="2" cy="-1" r=".25"/><circle cx="-1" cy="1" r=".3"/><circle cx="4" cy="-1" r=".22"/></g>
-            <circle id="ro-drop" cx="0" cy="-14" r=".7" fill="#5fb4d6" opacity="0"/>
-            <text id="ro-rT" x="0" y="-9.5" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="2.1" font-weight="600" fill="#16201d" opacity="0"></text>
+            <polygon id="ro-rA" points="-8,4 -9,-1 -5,-5 -1,-6 0,-2 -1,4" fill="#1f2423" stroke="#4a524f" stroke-width=".18"/>
+            <g id="ro-rB"><polygon points="-1,-6 4,-6 8,-2 3,0 0,-2" fill="#262c2a" stroke="#4a524f" stroke-width=".18"/></g>
+            <polygon id="ro-rC" points="0,-2 3,0 8,-2 9,3 -1,4" fill="#1a1f1e" stroke="#4a524f" stroke-width=".18"/>
+            <path id="ro-rW" d="M-1,-6 L0,-2 L-1,4 M0,-2 L3,0 L8,-2" fill="none" stroke="#5fb4d6" stroke-width="0" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle id="ro-drop" cx="0" cy="-14" r=".55" fill="#5fb4d6" opacity="0"/>
+            <ellipse id="ro-wet" cx="3" cy="4.3" rx="0" ry="1" fill="#3b4630" opacity=".7"/>
+            <g id="ro-drip"></g>
+            <text id="ro-rT" x="1" y="-10" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="1.9" font-weight="600" fill="#16201d" opacity="0"></text>
           </g>
           <g id="ro-person">
             <g id="ro-rod"><line x1="752" y1="218" x2="700" y2="190" stroke="#3a2d20" stroke-width="2"/>
@@ -640,13 +648,34 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
               <g id="ro-sick" opacity="0" fill="none" stroke="#5c8a2e" stroke-width="2" stroke-linecap="round"><path d="M756 184 q4 -5 8 0 q4 5 8 0"/><path d="M759 176 q3 -4 6 0 q3 4 6 0"/></g>
             </g>
           </g>
+          <g id="ro-flowlab" opacity="0" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="600" letter-spacing="1" fill="#f4f7f6" stroke="#1d2622" stroke-width="3" paint-order="stroke">
+            <text x="455" y="238">RUNOFF →</text>
+            <text x="186" y="292">SOAKING INTO GROUNDWATER ↓</text>
+          </g>
           <g id="ro-rain" stroke="#dbe9f0" stroke-width="1.4" stroke-linecap="round"></g>
           <g id="ro-snow" fill="#ffffff"></g>
         </g>
+        <g id="ro-macro" opacity="0" pointer-events="none"><g id="ro-mz">
+          <rect x="0" y="0" width="800" height="360" rx="14" fill="url(#ro-msky)" stroke="#16201d" stroke-width="3"/>
+          <path d="M0 268 C200 262 600 272 800 266 V346 Q800 360 786 360 H14 Q0 360 0 346Z" fill="#6f7a52"/>
+          <path d="M0 290 C220 284 580 294 800 288 V346 Q800 360 786 360 H14 Q0 360 0 346Z" fill="#5d6744"/>
+          <ellipse id="ro-mwet" cx="410" cy="276" rx="0" ry="8" fill="#3b4630" opacity=".75"/>
+          <g id="ro-mbg" stroke="#7fb8d6" stroke-width="2" stroke-linecap="round"></g>
+          <ellipse cx="410" cy="268" rx="185" ry="9" fill="#000" opacity=".3"/>
+          <path d="M240 130 L330 95 L470 100 L560 150 L586 214 L522 262 L362 271 L256 241 L226 186Z" fill="url(#ro-mrock)" stroke="#5b6562" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M330 95 L470 100 L430 150 L340 140Z" fill="#fff" opacity=".06"/>
+          <path d="M470 100 L560 150 L586 214 L500 190 L430 150Z" fill="#fff" opacity=".035"/>
+          <ellipse cx="270" cy="190" rx="5" ry="3.5" fill="#0b0d0c"/><ellipse cx="330" cy="120" rx="3" ry="2.2" fill="#0b0d0c"/><ellipse cx="420" cy="195" rx="4" ry="3" fill="#0b0d0c"/><ellipse cx="505" cy="225" rx="3.5" ry="2.5" fill="#0b0d0c"/><ellipse cx="380" cy="245" rx="3" ry="2" fill="#0b0d0c"/><ellipse cx="560" cy="180" rx="2.5" ry="2" fill="#0b0d0c"/><ellipse cx="245" cy="170" rx="2.4" ry="1.8" fill="#0b0d0c"/><ellipse cx="455" cy="120" rx="2.8" ry="2" fill="#0b0d0c"/><ellipse cx="320" cy="250" rx="2.2" ry="1.6" fill="#0b0d0c"/><ellipse cx="410" cy="165" rx="2" ry="1.5" fill="#0b0d0c"/>
+          <g id="ro-mfl"><g class="mf" data-c="#9aa6ba" data-x="300" data-y="152" data-ex="275" data-ey="240" transform="translate(300,152)"><path d="M-7 -2 L-3 -6 L4 -5 L7 0 L3 5 L-4 4Z" fill="#9aa6ba" stroke="#fff" stroke-opacity=".7" stroke-width="1"/><path d="M-3 -4 L2 -4 L0 -1Z" fill="#fff" opacity=".55"/></g><text x="300" y="139" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#f4f7f6"><tspan font-weight="700">Pb</tspan> lead</text><g class="mf" data-c="#d4782f" data-x="398" data-y="138" data-ex="384" data-ey="268" transform="translate(398,138)"><path d="M-7 -2 L-3 -6 L4 -5 L7 0 L3 5 L-4 4Z" fill="#d4782f" stroke="#fff" stroke-opacity=".7" stroke-width="1"/><path d="M-3 -4 L2 -4 L0 -1Z" fill="#fff" opacity=".55"/></g><text x="398" y="125" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#f4f7f6"><tspan font-weight="700">Cu</tspan> copper</text><g class="mf" data-c="#c9b25a" data-x="352" data-y="214" data-ex="342" data-ey="268" transform="translate(352,214)"><path d="M-7 -2 L-3 -6 L4 -5 L7 0 L3 5 L-4 4Z" fill="#c9b25a" stroke="#fff" stroke-opacity=".7" stroke-width="1"/><path d="M-3 -4 L2 -4 L0 -1Z" fill="#fff" opacity=".55"/></g><text x="352" y="201" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#f4f7f6"><tspan font-weight="700">As</tspan> arsenic</text><g class="mf" data-c="#c3cdd4" data-x="452" data-y="232" data-ex="446" data-ey="266" transform="translate(452,232)"><path d="M-7 -2 L-3 -6 L4 -5 L7 0 L3 5 L-4 4Z" fill="#c3cdd4" stroke="#fff" stroke-opacity=".7" stroke-width="1"/><path d="M-3 -4 L2 -4 L0 -1Z" fill="#fff" opacity=".55"/></g><text x="452" y="219" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#f4f7f6"><tspan font-weight="700">Zn</tspan> zinc</text><g class="mf" data-c="#d4782f" data-x="488" data-y="168" data-ex="494" data-ey="262" transform="translate(488,168)"><path d="M-7 -2 L-3 -6 L4 -5 L7 0 L3 5 L-4 4Z" fill="#d4782f" stroke="#fff" stroke-opacity=".7" stroke-width="1"/><path d="M-3 -4 L2 -4 L0 -1Z" fill="#fff" opacity=".55"/></g><text x="488" y="155" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#f4f7f6"><tspan font-weight="700">Cu</tspan> copper</text><g class="mf" data-c="#8fa1b8" data-x="540" data-y="206" data-ex="552" data-ey="244" transform="translate(540,206)"><path d="M-7 -2 L-3 -6 L4 -5 L7 0 L3 5 L-4 4Z" fill="#8fa1b8" stroke="#fff" stroke-opacity=".7" stroke-width="1"/><path d="M-3 -4 L2 -4 L0 -1Z" fill="#fff" opacity=".55"/></g><text x="540" y="193" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#f4f7f6"><tspan font-weight="700">Cd</tspan> cadmium</text></g>
+          <g id="ro-mtrail" stroke-linecap="round" fill="none"></g>
+          <g id="ro-mbead"></g>
+          <g id="ro-mfg" stroke="#4f9ec7" stroke-width="2.4" stroke-linecap="round"></g>
+          <text x="400" y="40" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="600" fill="#16201d">Raindrops dissolve the exposed metals and carry them away</text>
+        </g></g>
         <rect id="ro-fade" width="800" height="360" fill="#cfdad6" opacity="0" pointer-events="none"/>
       </svg>
       <div class="runoff-bar">
-        <ol class="runoff-steps" aria-hidden="true"><li>Rain</li><li>Snow</li><li>Freeze &amp; thaw</li><li>Runoff &amp; groundwater</li><li>Plants, fish &amp; people</li></ol>
+        <ol class="runoff-steps" aria-hidden="true"><li>Rain</li><li>Snow</li><li>Freeze &amp; thaw</li><li>Metals exposed</li><li>Groundwater &amp; runoff</li><li>Plants, fish &amp; people</li></ol>
         <button type="button" class="runoff-btn" id="runoff-btn" aria-pressed="false">Pause</button>
         <p class="runoff-cap" id="runoff-cap">Rain soaks into the pile and starts to pull metals out of the rock.</p>
       </div>
@@ -1225,140 +1254,176 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
 <script>
 (function(){
   var fig=document.getElementById('runoff'); if(!fig) return;
-  var NS='http://www.w3.org/2000/svg', $=function(id){return document.getElementById(id)};
-  var L=25.5, rain=$('ro-rain'), snow=$('ro-snow'), fishG=$('ro-fish'), svg=fig.querySelector('svg');
+  var NS='http://www.w3.org/2000/svg', $=function(id){return document.getElementById(id)}, svg=fig.querySelector('svg');
+  var L=47.5, rain=$('ro-rain'), snow=$('ro-snow'), fishG=$('ro-fish');
   var steps=fig.querySelectorAll('.runoff-steps li'), cap=$('runoff-cap'), btn=$('runoff-btn');
   var cracks=$('ro-cracks').querySelectorAll('path');
-  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);(p||null)&&p.appendChild(e);return e}
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
   function r(a,b,t){return Math.max(0,Math.min(1,(t-a)/(b-a)))}
   function ez(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2}
+  function lerp(a,b,u){return a+(b-a)*u}
+  function mix(a,b,u){return 'rgb('+a.map(function(v,i){return Math.round(v+(b[i]-v)*u)}).join(',')+')'}
+  function hex(h){return [parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)]}
   var seed=7; function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
-  var drops=[],flakes=[],fish=[],plants=[],weeds=[];
-  for(var i=0;i<110;i++){drops.push({x:rnd()*840-20,y:rnd()*360,v:420+rnd()*200,e:el('line',{x1:0,y1:0,x2:-4,y2:14},rain)})}
+  var METAL=['#9aa6ba','#d4782f','#c9b25a','#c3cdd4','#8fa1b8'];
+  var i, drops=[],flakes=[],fish=[],plants=[],weeds=[];
+  for(i=0;i<110;i++){drops.push({x:rnd()*840-20,y:rnd()*360,v:420+rnd()*200,e:el('line',{x1:0,y1:0,x2:-4,y2:14},rain)})}
   for(i=0;i<60;i++){flakes.push({x:rnd()*800,y:rnd()*360,v:30+rnd()*30,s:rnd()*6,r:1.4+rnd()*1.8,e:el('circle',{r:2},snow)})}
   [[600,312,1],[660,330,-1],[700,300,1]].forEach(function(f,k){
     var g=el('g',{},fishG);
     el('path',{d:'M-3 -6.2 L1 -10 L4 -6Z',fill:'#7d8d93'},g);
     var b=el('path',{d:'M-15 1 C-13 -2.5 -8 -6.5 0 -6.6 C7 -6.6 11 -3.5 13.5 -.6 L22 -7.5 L19.5 -.2 L22 7 L13.5 .6 C11 3.6 6 5.6 -2 5.6 C-9 5.6 -13 3.6 -15 1Z',fill:'url(#ro-wf)',stroke:'#6b7c83','stroke-width':.5},g);
-    var eye=el('circle',{cx:-11.2,cy:-.6,r:1.1,fill:'#1b1b1b'},g);
+    el('circle',{cx:-11.2,cy:-.6,r:1.1,fill:'#1b1b1b'},g);
     fish.push({x:f[0],y:f[1],d:f[2],k:k,g:g,b:b});
   });
   [[466,251,.9],[484,252,.8],[492,253,1.1],[518,256,.9],[742,268,1],[768,264,.8],[792,263,1.1],[150,252,.9],[96,251,1]].forEach(function(q,k){
-    var g=el('g',{transform:'translate('+q[0]+','+q[1]+')'},$('ro-plants')), s=q[2];
+    var g=el('g',{},$('ro-plants'));
     var b=el('path',{d:'M0 0 C-2 -8 -7 -14 -9 -18 C-4 -14 -1 -10 0 -4 C1 -12 1 -18 2 -24 C3 -16 3 -9 2 -3 C4 -9 8 -13 11 -15 C8 -10 5 -6 3 0Z',fill:'#4f8a3a'},g);
-    plants.push({x:q[0],y:q[1],s:s,b:b,g:g,k:k});
+    plants.push({x:q[0],y:q[1],s:q[2],b:b,g:g,k:k});
   });
   [[556,1],[580,.8],[612,1.1],[648,.9],[690,1],[722,.85]].forEach(function(q,k){
     var g=el('g',{},$('ro-weed'));
     var b=el('path',{d:'M0 0 C-6 -14 6 -24 -2 -38 C-8 -48 4 -56 0 -66 C6 -56 0 -48 4 -38 C10 -24 -2 -14 3 0Z',fill:'#3f8a5a'},g);
     weeds.push({x:q[0],s:q[1],b:b,g:g,k:k});
   });
-  function mix(a,b,u){return 'rgb('+a.map(function(v,i){return Math.round(v+(b[i]-v)*u)}).join(',')+')'}
-  var caps=['Rain soaks into the pile and starts to pull metals out of the rock.',
-    'Snow piles up on the slag and the bay freezes over. When it thaws, meltwater seeps into the cracks.',
-    'Up close: water seeps into a tiny crack, freezes and expands about 9%, and splits the rock apart. Each new break exposes fresh lead, copper and other metals to rain, so more can leach out.',
-    'Heavy rain washes metal-laden runoff into the bay and soaks it down into the groundwater, which also flows toward the lake.',
+
+  /* ---- macro close-up: raindrops pick up metal flecks ---- */
+  var mbg=[], mfg=[], beads=[];
+  for(i=0;i<34;i++) mbg.push({x:rnd()*820-10,o:rnd(),v:.7+rnd()*.5,e:el('line',{x1:0,y1:0,x2:-2,y2:16},$('ro-mbg'))});
+  fig.querySelectorAll('#ro-mfl .mf').forEach(function(g,k){
+    var d=g.dataset, c=hex(d.c), b={x:+d.x,y:+d.y,ex:+d.ex,ey:+d.ey,c:d.c,rgb:c,g:g,P:2.9+(k%3)*.35,o:k*.37};
+    b.drop=el('line',{x1:0,y1:0,x2:-1.5,y2:16,stroke:'#4f9ec7','stroke-width':2.6,'stroke-linecap':'round'},$('ro-mfg'));
+    b.ring=el('circle',{r:0,fill:'none',stroke:'#7cc4e4','stroke-width':1.5},$('ro-mfg'));
+    b.trail=el('line',{stroke:d.c,'stroke-width':3,opacity:0},$('ro-mtrail'));
+    b.bg=el('g',{},$('ro-mbead'));
+    b.bead=el('path',{d:'M0 -8 C4 -3 6 0 6 3 C6 7 3 9 0 9 C-3 9 -6 7 -6 3 C-6 0 -4 -3 0 -8Z',fill:mix([124,196,228],c,.4),stroke:'#e8f6fc','stroke-width':1,opacity:.92},b.bg);
+    b.sp=[[-2,3],[2,4.5],[0,1]].map(function(p){return el('circle',{cx:p[0],cy:p[1],r:1.5,fill:d.c,stroke:'#fff','stroke-width':.4},b.bg)});
+    b.sink=[0,1,2].map(function(){return el('circle',{r:2,fill:d.c,opacity:0},$('ro-mbead'))});
+    beads.push(b);
+  });
+  /* ---- drip phase at the small rock ---- */
+  var dripG=$('ro-drip'), ldrops=[], tdrops=[], specks=[];
+  for(i=0;i<18;i++) ldrops.push({x:-12+rnd()*28,o:rnd(),e:el('line',{x1:0,y1:0,x2:-.15,y2:1.3,stroke:'#7fb8d6','stroke-width':.16,'stroke-linecap':'round'},dripG)});
+  [[2.2,-1],[5.4,-.6],[8.6,-1.8],[-6,1.5]].forEach(function(p,k){ tdrops.push({x:p[0],y:p[1],o:k*.27,c:METAL[k%5],e:el('circle',{r:.45,fill:mix([124,196,228],hex(METAL[k%5]),.45),stroke:'#e8f6fc','stroke-width':.08},dripG)}); });
+  for(i=0;i<14;i++) specks.push({x:-8+rnd()*20,o:rnd(),v:.6+rnd()*.5,e:el('circle',{r:.32,fill:METAL[i%5]},dripG)});
+  /* ---- particles along groundwater and runoff routes ---- */
+  var routes=[].slice.call($('ro-routes').querySelectorAll('path')).map(function(p){return {p:p,len:p.getTotalLength()}});
+  var parts=[];
+  routes.forEach(function(rt,ri){ var n=ri===5?12:7; for(var k=0;k<n;k++) parts.push({rt:rt,o:k/n,dur:ri===5?3.6:6.5,c:METAL[(k+ri)%5],e:el('circle',{r:ri===5?2.6:2.2,fill:METAL[(k+ri)%5],stroke:'#1d2622','stroke-width':.6},$('ro-parts'))}); });
+
+  /* ---- camera ---- */
+  var CAM=[[0,400,180,800],[10.6,400,180,800],[13,445,243,64],[18,445,243,64],[19.6,449,240,40],[27.6,449,240,40],[29,447,246,64],[31.4,447,246,64],[34.4,400,180,800],[L,400,180,800]];
+  function cam(t){ for(var k=0;k<CAM.length-1;k++){ var a=CAM[k],b=CAM[k+1]; if(t<=b[0]){ var u=ez(r(a[0],b[0],t)), lw=Math.log(a[3]), lw2=Math.log(b[3]), w=Math.exp(lerp(lw,lw2,u)), f=lw===lw2?u:(lw-Math.log(w))/(lw-lw2); return {x:lerp(a[1],b[1],f),y:lerp(a[2],b[2],f),w:w}; } } return {x:400,y:180,w:800}; }
+
+  var caps=['Rain soaks into the slag pile.',
+    'Snow covers the pile and the bay freezes over.',
+    'Up close: meltwater seeps into a tiny crack in one small rock, freezes, expands about 9% and splits the rock apart.',
+    'Every fresh break exposes lead, copper, arsenic and other metals. Raindrops dissolve them and carry them away.',
+    'The metal-carrying water soaks down into the groundwater, which flows toward the lake, and runs off the surface straight into the bay.',
     'Metals build up in the water. Plants on shore and underwater die, fish die, and people who fish and swim here get sick.'];
   var cur=-1;
-  function stage(t){return t<5?0:t<8.5?1:t<14?2:t<16.8?3:4}
-  function frame0(t){
-    var rain1=r(1.5,2.5,t)*(1-r(4.5,5.2,t)), rain2=r(13.8,14.5,t)*(1-r(18,19,t));
-    var storm=Math.max(rain1*.75,rain2,r(5,6,t)*(1-r(8,8.8,t))*.45);
-    $('ro-dark').setAttribute('opacity',(storm*.45).toFixed(3));
-    $('ro-clouds').setAttribute('opacity',(Math.max(storm,0)*0.95).toFixed(3));
-    var n=Math.round(rain1*55+rain2*110);
-    drops.forEach(function(d,i){
-      if(i>=n){d.e.setAttribute('opacity',0);return}
-      var y=(d.y+t*d.v)%380-10, x=d.x-(y*.25)%1;
-      d.e.setAttribute('transform','translate('+(d.x+y*.12).toFixed(1)+','+y.toFixed(1)+')');
-      d.e.setAttribute('opacity',.75);
-    });
-    var sn=r(5,5.8,t)*(1-r(8.3,9,t));
-    flakes.forEach(function(f){
-      var y=(f.y+t*f.v)%370-5, x=f.x+Math.sin(t*1.5+f.s)*8;
-      f.e.setAttribute('cx',x.toFixed(1));f.e.setAttribute('cy',y.toFixed(1));f.e.setAttribute('r',f.r);
-      f.e.setAttribute('opacity',(sn*.9).toFixed(2));
-    });
-    $('ro-snowcap').setAttribute('opacity',(r(5.6,8,t)*(1-r(8.6,10,t))).toFixed(2));
-    cracks.forEach(function(c,i){
-      var a=12.9+i*.25; c.setAttribute('stroke-dashoffset',(1-ez(r(a,a+.6,t))).toFixed(3));
-      c.setAttribute('opacity',(1-r(20.5,21.1,t)).toFixed(2));
-    });
-    var ru=ez(r(14.3,15.9,t));$('ro-run').setAttribute('stroke-dashoffset',(1-ru).toFixed(3));$('ro-run').setAttribute('opacity',ru>.01?(1-r(20.5,21.1,t)).toFixed(2):0);
-    var pl=ez(r(15.3,18.5,t));
-    $('ro-plumeE').setAttribute('rx',(pl*170).toFixed(1));$('ro-plumeE').setAttribute('ry',(pl*55).toFixed(1));
-    $('ro-sheen').setAttribute('fill',pl>.2?'#c9b07a':'#bfe3ee');
-    fish.forEach(function(f){
-      var die=ez(r(16.8+f.k*.4,18.1+f.k*.4,t));
-      var sw=Math.sin(t*(0.9+f.k*.2)+f.k*2)*22*(1-die);
-      var x=f.x+sw, y=f.y+(278-f.y)*die;
-      var dir=Math.cos(t*(0.9+f.k*.2)+f.k*2)>=0?1:-1; if(die>0) dir=f.d;
-      f.g.setAttribute('transform','translate('+x.toFixed(1)+','+y.toFixed(1)+') scale('+(-dir)+','+(1-2*die).toFixed(2)+')');
-      var g=Math.round(224-die*90), gg=Math.round(138-die*10*0), bb=Math.round(79+die*55);
-      f.b.setAttribute('fill',die>.02?mix([205,214,217],[128,124,108],die):'url(#ro-wf)');
-    });
-    var dead=ez(r(16.9,18.7,t));
-    plants.forEach(function(q){var d=ez(r(16.9+q.k*.08,18.5+q.k*.08,t));
-      q.g.setAttribute('transform','translate('+q.x+','+q.y+') scale('+q.s+','+(q.s*(1-d*.5)).toFixed(2)+') rotate('+(d*(q.k%2?18:-18)).toFixed(0)+')');
-      q.b.setAttribute('fill',mix([79,138,58],[140,110,60],d));});
-    weeds.forEach(function(q){var d=ez(r(16.5+q.k*.12,18.3+q.k*.12,t)), sw=Math.sin(t*1.3+q.k)*8*(1-d*.8);
-      q.g.setAttribute('transform','translate('+q.x+',362) scale('+q.s+','+(q.s*(1-d*.55)).toFixed(2)+') skewX('+(sw+d*14).toFixed(1)+')');
-      q.b.setAttribute('fill',mix([63,138,90],[110,90,55],d));});
-    var ice=r(5.6,6.6,t)*(1-r(8.8,10,t)), sh=ez(r(5.8,6.6,t)*(1-r(8.6,9.4,t)));
+  function stage(t){return t<5.5?0:t<10.5?1:t<18?2:t<28.5?3:t<39?4:5}
+
+  function frame(t){
+    var c=cam(t), vx=c.x-c.w/2, vy=c.y-c.w*.225, vw=c.w;
+    svg.setAttribute('viewBox',vx.toFixed(3)+' '+vy.toFixed(3)+' '+vw.toFixed(3)+' '+(vw*.45).toFixed(3));
+    var wide=r(300,600,vw);
+    // weather
+    var rain1=r(1,2,t)*(1-r(4.8,5.6,t)), rain2=r(30.5,32,t)*(1-r(40.5,42,t)), snowy=r(5.5,6.3,t)*(1-r(9.6,10.4,t));
+    var storm=Math.max(rain1*.75,rain2,snowy*.45);
+    $('ro-dark').setAttribute('opacity',(storm*.45*wide).toFixed(3));
+    $('ro-clouds').setAttribute('opacity',(storm*.95).toFixed(3));
+    var n=Math.round((rain1*55+rain2*110)*wide);
+    drops.forEach(function(d,i){ if(i>=n){d.e.setAttribute('opacity',0);return}
+      var y=(d.y+t*d.v)%380-10; d.e.setAttribute('transform','translate('+(d.x+y*.12).toFixed(1)+','+y.toFixed(1)+')'); d.e.setAttribute('opacity',.75); });
+    flakes.forEach(function(f){ var y=(f.y+t*f.v)%370-5, x=f.x+Math.sin(t*1.5+f.s)*8;
+      f.e.setAttribute('cx',x.toFixed(1));f.e.setAttribute('cy',y.toFixed(1));f.e.setAttribute('r',f.r); f.e.setAttribute('opacity',(snowy*.9*wide).toFixed(2)); });
+    $('ro-snowcap').setAttribute('opacity',(r(6,8.5,t)*(1-r(10,12,t))).toFixed(2));
+    var ice=r(6.2,7.2,t)*(1-r(9.8,11,t)), sh=ez(r(6.4,7.2,t)*(1-r(9.6,10.4,t)));
     $('ro-ice').setAttribute('opacity',(ice*.95).toFixed(2));
     $('ro-shanty').setAttribute('opacity',sh.toFixed(2));
     $('ro-smoke').setAttribute('transform','translate(0,'+(-(t*6)%8).toFixed(1)+')');
     $('ro-person').setAttribute('opacity',(1-sh).toFixed(2));
-    var sick=ez(r(18.1,19.3,t));
+    // freeze-thaw on one small rock
+    var dr=r(13.4,14.3,t); $('ro-drop').setAttribute('cy',(-14+dr*12).toFixed(2)); $('ro-drop').setAttribute('opacity',dr>0&&dr<1?1:0);
+    var wet=ez(r(14.2,15,t)), frz=ez(r(15.4,16.4,t)), spl=ez(r(16.7,17.6,t));
+    $('ro-rW').setAttribute('stroke-width',(wet*.35+frz*.5).toFixed(2));
+    $('ro-rW').setAttribute('stroke',frz>.5?'#eef9fd':'#5fb4d6');
+    $('ro-rW').setAttribute('opacity',(1-r(17.4,18.2,t)).toFixed(2));
+    $('ro-rA').setAttribute('transform','translate('+(-1.6*spl).toFixed(2)+','+(.3*spl).toFixed(2)+') rotate('+(-8*spl).toFixed(1)+' -4 4)');
+    $('ro-rB').setAttribute('transform','translate('+(1.1*spl).toFixed(2)+','+(-1.7*spl).toFixed(2)+') rotate('+(10*spl).toFixed(1)+' 4 -2)');
+    $('ro-rC').setAttribute('transform','translate('+(1.7*spl).toFixed(2)+','+(.4*spl).toFixed(2)+') rotate('+(6*spl).toFixed(1)+' 4 2)');
+    var rT=$('ro-rT'), drip=r(29,29.6,t)*(1-r(31.6,32.4,t));
+    if(t<20){ rT.textContent=t<15.2?'meltwater seeps into a crack':t<16.6?'it freezes and expands':'the rock splits apart'; rT.setAttribute('opacity',(r(13,13.5,t)*(1-r(17.9,18.4,t))).toFixed(2)); }
+    else { rT.textContent='the water soaks into the ground'; rT.setAttribute('opacity',(r(29.2,29.8,t)*(1-r(31.4,32,t))).toFixed(2)); }
+    // macro view
+    var mIn=ez(r(18,19.6,t)), mOut=ez(r(27.6,29,t)), mv=mIn*(1-mOut);
+    $('ro-macro').setAttribute('opacity',Math.min(1,mv*1.6).toFixed(3));
+    if(mv>0){
+      var bx=(450-vx)/vw*800, by=(241-vy)/(vw*.45)*360, s=lerp(.06,1,mv), px=lerp(bx,400,mv), py=lerp(by,180,mv);
+      $('ro-mz').setAttribute('transform','translate('+vx.toFixed(3)+','+vy.toFixed(3)+') scale('+(vw/800).toFixed(5)+') translate('+px.toFixed(1)+','+py.toFixed(1)+') scale('+s.toFixed(4)+') translate(-400,-180)');
+      var act=r(19.4,20,t)*(1-r(27.4,28,t)), shrink=1-.35*r(20,27.5,t);
+      mbg.forEach(function(d){ var u=(t*d.v+d.o)%1, y=-20+u*330; d.e.setAttribute('transform','translate('+d.x.toFixed(1)+','+y.toFixed(1)+')'); d.e.setAttribute('opacity',(act*.7).toFixed(2)); });
+      var wetM=r(20.5,27.5,t); $('ro-mwet').setAttribute('rx',(wetM*170).toFixed(1));
+      beads.forEach(function(b){
+        b.g.setAttribute('transform','translate('+b.x+','+b.y+') scale('+shrink.toFixed(3)+')');
+        var u=((t-19.6)/b.P+1-b.o%1)%1, on=act>0&&t>19.6+b.o*.6;
+        var fall=u<.22, hit=u>=.22&&u<.34, slide=u>=.34&&u<.8, drp=u>=.8;
+        b.drop.setAttribute('opacity',on&&fall?.95:0);
+        b.drop.setAttribute('transform','translate('+(b.x+2).toFixed(1)+','+lerp(-30,b.y-16,u/.22).toFixed(1)+')');
+        var hu=r(.22,.34,u); b.ring.setAttribute('cx',b.x); b.ring.setAttribute('cy',b.y); b.ring.setAttribute('r',(hu*16).toFixed(1)); b.ring.setAttribute('opacity',on&&hit?(1-hu).toFixed(2):0);
+        var bx2=b.x,by2=b.y,sc=1,op=0;
+        if(hit){ sc=hu; op=1; }
+        else if(slide){ var su=ez(r(.34,.8,u)); bx2=lerp(b.x,b.ex,su); by2=lerp(b.y,b.ey,su); op=1; }
+        else if(drp){ var du=r(.8,1,u); bx2=b.ex; by2=lerp(b.ey,276,du); op=1-r(.86,1,u); }
+        b.bg.setAttribute('transform','translate('+bx2.toFixed(1)+','+by2.toFixed(1)+') scale('+(sc*1.6).toFixed(2)+(drp?','+(sc*1.6*(1-.5*r(.8,1,u))).toFixed(2):'')+')');
+        b.bg.setAttribute('opacity',on?op.toFixed(2):0);
+        b.sp.forEach(function(p,j){ p.setAttribute('r',(hit?2*hu:2).toFixed(2)); p.setAttribute('transform','translate('+(Math.sin(t*6+j*2)*.8).toFixed(2)+',0)'); });
+        b.trail.setAttribute('x1',b.x);b.trail.setAttribute('y1',b.y);b.trail.setAttribute('x2',bx2.toFixed(1));b.trail.setAttribute('y2',by2.toFixed(1));
+        b.trail.setAttribute('opacity',on&&slide?(.45*(1-r(.6,.8,u))).toFixed(2):0);
+        b.sink.forEach(function(sk,j){ var vis=on&&(u>.98||u<.45), q=u>.98?0:u/.45; sk.setAttribute('cx',(b.ex+(j-1)*4).toFixed(1)); sk.setAttribute('cy',(278+q*60).toFixed(1)); sk.setAttribute('opacity',vis?(1-q).toFixed(2):0); });
+      });
+    }
+    // drips soak into the ground beside the small rock
+    ldrops.forEach(function(d){ var u=(t*1.3+d.o)%1; d.e.setAttribute('transform','translate('+d.x.toFixed(2)+','+(-16+u*20).toFixed(2)+')'); d.e.setAttribute('opacity',(drip*.8).toFixed(2)); });
+    tdrops.forEach(function(d){ var u=(t*.9+d.o)%1; d.e.setAttribute('cx',d.x); d.e.setAttribute('cy',(d.y+(4.2-d.y)*u*u).toFixed(2)); d.e.setAttribute('opacity',(drip*(u<.95?1:0)).toFixed(2)); });
+    specks.forEach(function(p){ var u=(t*.35*p.v+p.o)%1; p.e.setAttribute('cx',(p.x+Math.sin(u*6+p.o*9)*.4).toFixed(2)); p.e.setAttribute('cy',(4.6+u*10).toFixed(2)); p.e.setAttribute('opacity',(drip*(1-u)).toFixed(2)); });
+    $('ro-wet').setAttribute('rx',(r(29,32,t)*13*(1-r(46,47,t))).toFixed(2));
+    // pile cracks show once the camera pulls back
+    cracks.forEach(function(cr,i){ var a=31.6+i*.4; cr.setAttribute('stroke-dashoffset',(1-ez(r(a,a+.9,t))).toFixed(3)); cr.setAttribute('opacity',(1-r(46.4,47,t)).toFixed(2)); });
+    // groundwater and runoff
+    var flow=r(32.2,33.4,t)*(1-r(44.5,46,t));
+    parts.forEach(function(p){ var u=((t/p.dur)+p.o)%1, pt=p.rt.p.getPointAtLength(u*p.rt.len);
+      p.e.setAttribute('cx',pt.x.toFixed(1)); p.e.setAttribute('cy',pt.y.toFixed(1)); p.e.setAttribute('opacity',(flow*wide*Math.min(1,u*8,(1-u)*5)).toFixed(2)); });
+    var ru=ez(r(33,35,t)); $('ro-run').setAttribute('stroke-dashoffset',(1-ru).toFixed(3)); $('ro-run').setAttribute('opacity',ru>.01?(1-r(46,46.8,t)).toFixed(2):0);
+    $('ro-flowlab').setAttribute('opacity',(r(33.6,34.4,t)*(1-r(39.2,40,t))).toFixed(2));
+    var gw=ez(r(34,39,t)); $('ro-gwr').setAttribute('width',(gw*430).toFixed(1)); $('ro-gwc').setAttribute('opacity',(gw>0?.7*(1-r(46,46.8,t)):0).toFixed(2));
+    var pl=ez(r(34.5,40,t)); $('ro-plumeE').setAttribute('rx',(pl*170).toFixed(1)); $('ro-plumeE').setAttribute('ry',(pl*55).toFixed(1));
+    $('ro-sheen').setAttribute('fill',pl>.2?'#c9b07a':'#bfe3ee');
+    // life
+    fish.forEach(function(f){ var die=ez(r(40.4+f.k*.6,42+f.k*.6,t)), ph=t*(0.9+f.k*.2)+f.k*2;
+      var x=f.x+Math.sin(ph)*22*(1-die), y=f.y+(278-f.y)*die, dir=die>0?f.d:(Math.cos(ph)>=0?1:-1);
+      f.g.setAttribute('transform','translate('+x.toFixed(1)+','+y.toFixed(1)+') scale('+(-dir)+','+(1-2*die).toFixed(2)+')');
+      f.b.setAttribute('fill',die>.02?mix([205,214,217],[128,124,108],die):'url(#ro-wf)'); });
+    plants.forEach(function(q){var d=ez(r(39.6+q.k*.1,41.6+q.k*.1,t));
+      q.g.setAttribute('transform','translate('+q.x+','+q.y+') scale('+q.s+','+(q.s*(1-d*.5)).toFixed(2)+') rotate('+(d*(q.k%2?18:-18)).toFixed(0)+')');
+      q.b.setAttribute('fill',mix([79,138,58],[140,110,60],d));});
+    weeds.forEach(function(q){var d=ez(r(39.2+q.k*.15,41.2+q.k*.15,t)), sw=Math.sin(t*1.3+q.k)*8*(1-d*.8);
+      q.g.setAttribute('transform','translate('+q.x+',362) scale('+q.s+','+(q.s*(1-d*.55)).toFixed(2)+') skewX('+(sw+d*14).toFixed(1)+')');
+      q.b.setAttribute('fill',mix([63,138,90],[110,90,55],d));});
+    var sick=ez(r(42.4,44,t));
     $('ro-body').setAttribute('transform','rotate('+(sick*14).toFixed(1)+' 764 264)');
     $('ro-head').setAttribute('fill',sick>.05?'rgb('+Math.round(224-sick*60)+','+Math.round(179+sick*10)+','+Math.round(143-sick*40)+')':'#e0b38f');
     $('ro-sick').setAttribute('opacity',sick.toFixed(2));
     $('ro-sick').setAttribute('transform','translate(0,'+(Math.sin(t*4)*2).toFixed(1)+')');
     $('ro-rod').setAttribute('transform','rotate('+(-sick*18).toFixed(1)+' 752 218)');
-    $('ro-fade').setAttribute('opacity',Math.max(r(21.2,22,t),1-r(0,.8,t)).toFixed(2));
-    // zoom to one small rock for freeze-thaw
-    var z=ez(r(8.9,10.1,t))*(1-ez(r(12.6,13.8,t))), w=800*Math.pow(64/800,z), k=(800-w)/736;
-    svg.setAttribute('viewBox',(400+45*k-w/2).toFixed(2)+' '+(180+63*k-w*.225).toFixed(2)+' '+w.toFixed(2)+' '+(w*.45).toFixed(2));
-    var dr=r(10.1,10.7,t); $('ro-drop').setAttribute('cy',(-14+dr*12).toFixed(2)); $('ro-drop').setAttribute('opacity',dr>0&&dr<1?1:0);
-    var wet=ez(r(10.6,11.1,t)), frz=ez(r(11.2,11.8,t)), spl=ez(r(11.8,12.4,t));
-    $('ro-rW').setAttribute('stroke-width',((wet*.5+frz*.9)*(1-r(13.6,14.2,t))).toFixed(2));
-    $('ro-rW').setAttribute('stroke',frz>.5?'#f2fbff':'#5fb4d6');
-    $('ro-rA').setAttribute('transform','translate('+(-1.6*spl).toFixed(2)+','+(.3*spl).toFixed(2)+') rotate('+(-8*spl).toFixed(1)+' -4 4)');
-    $('ro-rB').setAttribute('transform','translate('+(1.1*spl).toFixed(2)+','+(-1.7*spl).toFixed(2)+') rotate('+(10*spl).toFixed(1)+' 4 -2)');
-    $('ro-rC').setAttribute('transform','translate('+(1.7*spl).toFixed(2)+','+(.4*spl).toFixed(2)+') rotate('+(6*spl).toFixed(1)+' 4 2)');
-    $('ro-rbits').setAttribute('opacity',spl>0?1:0);
-    $('ro-rbits').setAttribute('transform','translate(0,'+(spl*2.2).toFixed(2)+') scale('+(1+spl*.4).toFixed(2)+')');
-    var lab=t<11.15?'water seeps into a crack':t<11.85?'it freezes and expands':'the rock splits apart';
-    $('ro-rT').textContent=lab; $('ro-rT').setAttribute('opacity',(r(10,10.3,t)*(1-r(12.5,12.8,t))).toFixed(2));
-    // seep into groundwater
-    var sp=r(14.6,15.2,t)*(1-r(20.5,21.1,t));
-    $('ro-seep').setAttribute('opacity',(sp*.9).toFixed(2)); $('ro-seep').setAttribute('stroke-dashoffset',(-t*14).toFixed(1));
-    var gw=ez(r(15.2,18,t)); $('ro-gwr').setAttribute('width',(gw*430).toFixed(1)); $('ro-gwc').setAttribute('opacity',(gw>0?.75*(1-r(20.5,21.1,t)):0).toFixed(2));
+    $('ro-fade').setAttribute('opacity',Math.max(r(46.6,47.5,t),1-r(0,.9,t)).toFixed(2));
     var s=stage(t); if(s!==cur){cur=s;steps.forEach(function(li,i){li.classList.toggle('on',i===s)});cap.textContent=caps[s];}
   }
-  var mr=$('ro-mrain'), lc=$('ro-leach'), mdrops=[], ldrops=[];
-  for(i=0;i<14;i++){var mx=-.5+rnd()*8.3; mdrops.push({x:mx,ys:mx<4?-6:-6+(mx-4),p:.45+rnd()*.3,o:rnd(),l:el('line',{x1:0,y1:0,x2:-.12,y2:.8},mr),c:el('circle',{r:0,fill:'none',stroke:'#3f93bd','stroke-width':.09},mr)})}
-  for(i=0;i<4;i++){ldrops.push({o:i/4,e:el('ellipse',{rx:.22,ry:.3},lc)})}
-  function deep(T){
-    var z2=ez(r(12.6,13.4,T))*(1-ez(r(15.3,16,T)));
-    $('ro-met').setAttribute('opacity',(r(13,13.4,T)*(1-r(15.2,15.6,T))).toFixed(2));
-    $('ro-metT').setAttribute('opacity',(r(13.1,13.5,T)*(1-r(15.1,15.5,T))).toFixed(2));
-    if(T>12.5&&T<16){ $('ro-rT').setAttribute('opacity',(1-r(12.5,12.8,T)).toFixed(2)); $('ro-rW').setAttribute('opacity',(1-r(12.6,13.2,T)).toFixed(2)); } else $('ro-rW').setAttribute('opacity',1);
-    if(z2<=0) return;
-    var w=64*Math.pow(22/64,z2), cx=445+4.5*z2, cy=243-2.2*z2;
-    svg.setAttribute('viewBox',(cx-w/2).toFixed(3)+' '+(cy-w*.225).toFixed(3)+' '+w.toFixed(3)+' '+(w*.45).toFixed(3));
-    mdrops.forEach(function(d){ var u=((T/d.p)+d.o)%1, fall=u<.75, y=-8.6+(d.ys+8.6)*(u/.75);
-      d.l.setAttribute('transform','translate('+d.x.toFixed(2)+','+(fall?y-.8:-99).toFixed(2)+')');
-      d.c.setAttribute('cx',d.x.toFixed(2)); d.c.setAttribute('cy',d.ys.toFixed(2)); d.c.setAttribute('r',fall?0:((u-.75)*2.4).toFixed(2)); d.c.setAttribute('opacity',fall?0:(1-(u-.75)*4).toFixed(2)); });
-    ldrops.forEach(function(d){ var u=((T/1.1)+d.o)%1, x=5.8+u*2.6, y=-3.4+u*1.6+u*u*5;
-      d.e.setAttribute('cx',x.toFixed(2)); d.e.setAttribute('cy',y.toFixed(2)); d.e.setAttribute('fill',u<.5?'#6fa8b8':'#9a8a3c'); d.e.setAttribute('opacity',(1-u*.6).toFixed(2)); });
-    fig.querySelectorAll('.ro-fl').forEach(function(c,i){ c.setAttribute('r',(.34+.08*Math.sin(T*5+i*1.7)).toFixed(3)); });
-  }
-  function frame(T){ var t=T<12.5?T:T<16?12.5:T-3.5; frame0(t); deep(T); }
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var playing=!reduce, inView=false, visible=false, t0=null, t=reduce?22.9:0, last=null, raf=null;
+  var playing=!reduce, inView=false, visible=false, t=reduce?37:0, last=null, raf=null;
   function loop(now){
-    raf=null; if(!playing||!visible) {last=null;return}
+    raf=null; if(!playing||!visible){last=null;return}
     if(last!=null) t=(t+Math.min(.1,(now-last)/1000))%L; last=now;
     frame(t); raf=requestAnimationFrame(loop);
   }
@@ -1366,6 +1431,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
   function setBtn(){btn.textContent=playing?'Pause':'Play';btn.setAttribute('aria-pressed',playing?'false':'true')}
   btn.addEventListener('click',function(){playing=!playing;setBtn();if(playing)kick();});
   setBtn(); frame(t);
+  window.__runoff=function(x){t=x;frame(x)};
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){inView=es[0].isIntersecting;visible=inView&&!document.hidden;kick()},{threshold:.15}).observe(fig)}else{inView=visible=true;kick()}
   document.addEventListener('visibilitychange',function(){visible=inView&&!document.hidden;kick()});
 })();
