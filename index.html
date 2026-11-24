@@ -127,9 +127,19 @@ figcaption{font-size:.85rem;color:var(--muted);margin-top:.6rem;line-height:1.45
 .tile .sym{font:900 2.8rem/1 var(--display);margin-top:.2rem}
 .tile .name{font:600 .85rem/1.2 var(--body)}
 .tile .pct{font:500 .8rem/1.2 var(--mono);margin-top:.5rem;padding-top:.5rem;border-top:1px solid color-mix(in srgb,var(--tile-fg) 25%,transparent)}
-.tile.cu .sym{color:#3fae8f}.tile.pb .sym{color:#e0a067}
-:root[data-theme="dark"] .tile.cu .sym{color:#1d6a56}:root[data-theme="dark"] .tile.pb .sym{color:#9a4a17}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tile.cu .sym{color:#1d6a56}:root:not([data-theme="light"]) .tile.pb .sym{color:#9a4a17}}
+.tile{box-shadow:0 2px 3px rgba(0,0,0,.22),0 8px 18px rgba(0,0,0,.24)}
+.tile .sym{font-size:3.1rem;letter-spacing:.01em;color:transparent;-webkit-background-clip:text;background-clip:text;background-size:100% 100%,260% 100%;background-position:0 0,100% 0;
+  background-image:linear-gradient(180deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.08) 42%,rgba(0,0,0,.28) 52%,rgba(0,0,0,0) 70%,rgba(255,255,255,.22) 100%),linear-gradient(112deg,var(--m1) 0%,var(--m2) 18%,var(--m3) 34%,var(--m5) 44%,#fff 48%,var(--m5) 52%,var(--m3) 62%,var(--m2) 80%,var(--m4) 100%);
+  filter:drop-shadow(0 1px 0 rgba(255,255,255,.18)) drop-shadow(0 3px 2px rgba(0,0,0,.55));animation:metal-shine 7s ease-in-out infinite}
+.tile.cu .sym{--m1:#6e3212;--m2:#c46b31;--m3:#9c4f22;--m4:#e39a62;--m5:#ffd2ab}
+.tile.pb .sym{--m1:#3d4450;--m2:#8a93a3;--m3:#5d6574;--m4:#a7afbd;--m5:#d7dde6}
+.tile.as .sym{--m1:#34363a;--m2:#8d8f8c;--m3:#55575a;--m4:#a4a5a0;--m5:#d0d1cb}
+.tile.cd .sym{--m1:#5c6874;--m2:#c3ccd5;--m3:#8794a1;--m4:#dde4ea;--m5:#f7fafc}
+.tile.zn .sym{--m1:#4b5f6e;--m2:#a9bfcf;--m3:#71889a;--m4:#c6d7e3;--m5:#eef5fa}
+.tile:nth-child(2) .sym{animation-delay:-1.4s}.tile:nth-child(3) .sym{animation-delay:-2.8s}.tile:nth-child(4) .sym{animation-delay:-4.2s}.tile:nth-child(5) .sym{animation-delay:-5.6s}
+.tile:hover .sym,.tile:focus-visible .sym{animation-duration:1.6s}
+@keyframes metal-shine{0%,70%{background-position:0 0,100% 0}100%{background-position:0 0,0 0}}
+@media (prefers-reduced-motion: reduce){.tile .sym{animation:none;background-position:0 0,50% 0}}
 
 /* 3D map */
 .map3d-wrap{margin-top:2rem;border:1px solid var(--line);background:var(--surface)}
@@ -391,6 +401,21 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
 .share-card img{display:block;width:100%;height:auto;border:1px solid var(--line)}
 .share-card figcaption{font-size:.82rem;color:var(--muted);margin-top:.5rem}
 .share-status{font-size:.85rem;color:var(--verdigris);min-height:1.2em;margin:.6rem 0 0}
+/* hover-card emphasis: awareness-poster styling */
+.pop{border-top:0}
+.pop::after{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(-45deg,#e8b423 0 8px,#16201d 8px 16px)}
+.pop-h{margin-top:.25rem;color:var(--danger);font-weight:600;letter-spacing:.14em}
+.pop-warn{display:inline-block;margin-right:.35rem;font-size:.95rem;vertical-align:-1px}
+.k-toxic{font-weight:800;color:#3aa818;text-shadow:0 0 4px rgba(120,255,60,.85),0 0 12px rgba(120,255,60,.6),0 0 22px rgba(120,255,60,.35);animation:k-glow 2.4s ease-in-out infinite}
+@keyframes k-glow{50%{text-shadow:0 0 2px rgba(120,255,60,.5),0 0 6px rgba(120,255,60,.3),0 0 10px rgba(120,255,60,.15)}}
+.k-cancer{font:900 1.12em/1 var(--display);text-transform:uppercase;letter-spacing:.06em;color:#8e0d0d;text-shadow:1px 1px 0 #2a0000,0 0 8px rgba(160,0,0,.45);display:inline-block;animation:k-dread 4s steps(1) infinite}
+@keyframes k-dread{0%,86%,100%{opacity:1;transform:none}88%{opacity:.55;transform:translateX(.6px)}90%{opacity:1;transform:translateX(-.6px)}92%{opacity:.7}}
+.k-iq,.k-hit{font-weight:800;color:var(--ink)}
+.k-iq{background:linear-gradient(transparent 58%,rgba(214,40,40,.35) 58%);padding:0 .1em}
+.k-hit{box-shadow:inset 0 -.18em 0 rgba(214,40,40,.28)}
+:root[data-theme="dark"] .k-cancer{color:#ff4a3d;text-shadow:1px 1px 0 #3a0000,0 0 10px rgba(255,40,30,.5)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .k-cancer{color:#ff4a3d;text-shadow:1px 1px 0 #3a0000,0 0 10px rgba(255,40,30,.5)}}
+@media (prefers-reduced-motion: reduce){.k-toxic,.k-cancer{animation:none}}
 </style>
 </head>
 <body>
@@ -472,7 +497,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
       </div>
       <div class="map-legend"><span><i style="background:#0a0e0d"></i>Slag piles</span><span><i style="background:#2b8fd6"></i>Protected waterway</span><span><i style="background:transparent;border:2px dashed #e08a4f"></i>Project area</span></div>
     </div>
-    <p class="small muted" style="margin-top:.6rem">Imagery: USGS The National Map (public domain). Elevation: AWS Terrain Tiles from USGS 3DEP. Heights are exaggerated 2.5× so the slag piles stand out. Slag weights are this project's rough estimates from aerial measurements. The waterway outline is traced from the same elevation data.</p>
+    <p class="small muted" style="margin-top:.6rem">Imagery: USGS The National Map (public domain). Elevation: AWS Terrain Tiles from USGS 3DEP. Heights are exaggerated 1.15× to make the terrain easier to read. Slag weights are this project's rough estimates from aerial measurements. The waterway outline is traced from the same elevation data.</p>
   </div>
 </section>
 
@@ -540,45 +565,45 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
       <div class="tile cu" tabindex="0" role="button" aria-expanded="false" aria-label="Copper: health warnings and links">
         <span class="num">29</span><span class="sym">Cu</span><span class="name">Copper</span><span class="pct">≈ 3–6% by weight</span>
         <div class="pop" role="group" aria-label="Copper warnings">
-          <p class="pop-h">Harmful to</p>
+          <p class="pop-h"><span class="pop-warn" aria-hidden="true">⚠</span>Harmful to</p>
           <ul class="hzs"><li class="hz mild" title="People: in excess"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6" r="3.2"/><path d="M5.5 21v-4.5a6.5 6.5 0 0 1 13 0V21z"/></svg><span>People<em> (in excess)</em></span></li><li class="hz" title="Fish & aquatic life"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12c3-4.2 7.5-6 11.5-4.6 2 .7 3.6 2 4.8 3.4L22 7.5v9l-3.2-3.3c-1.2 1.4-2.8 2.7-4.8 3.4C10 18 5.5 16.2 2.5 12z"/><circle cx="7.4" cy="11" r="1.1" fill="var(--pop-bg)"/></svg><span>Fish & aquatic life</span></li><li class="hz" title="Plants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21v-7.2C6.2 13.6 3.5 10.6 3.5 5.5c4.6 0 7.3 2.4 7.9 6.3.9-4.5 4-7.3 9.1-7.3 0 5.6-3 8.8-7.9 9.1V21z"/></svg><span>Plants</span></li></ul>
-          <p class="pop-t">Needed in tiny amounts, but toxic to plants and to fish even at low levels in water. Large doses cause stomach, liver and kidney damage in people.</p>
+          <p class="pop-t">Needed in tiny amounts, but <span class="k-toxic">toxic</span> to plants and to fish even at low levels in water. Large doses cause <b class="k-hit">stomach, liver and kidney damage</b> in people.</p>
           <p class="pop-l"><a href="https://wwwn.cdc.gov/TSP/substances/ToxSubstance.aspx?toxid=37" target="_blank" rel="noopener">CDC/ATSDR: Copper ↗</a><a href="https://en.wikipedia.org/wiki/Copper" target="_blank" rel="noopener">Wikipedia ↗</a></p>
         </div>
       </div>
       <div class="tile pb" tabindex="0" role="button" aria-expanded="false" aria-label="Lead: health warnings and links">
         <span class="num">82</span><span class="sym">Pb</span><span class="name">Lead</span><span class="pct">≈ 2–3% by weight</span>
         <div class="pop" role="group" aria-label="Lead warnings">
-          <p class="pop-h">Harmful to</p>
+          <p class="pop-h"><span class="pop-warn" aria-hidden="true">⚠</span>Harmful to</p>
           <ul class="hzs"><li class="hz" title="People"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6" r="3.2"/><path d="M5.5 21v-4.5a6.5 6.5 0 0 1 13 0V21z"/></svg><span>People</span></li><li class="hz" title="Fish & aquatic life"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12c3-4.2 7.5-6 11.5-4.6 2 .7 3.6 2 4.8 3.4L22 7.5v9l-3.2-3.3c-1.2 1.4-2.8 2.7-4.8 3.4C10 18 5.5 16.2 2.5 12z"/><circle cx="7.4" cy="11" r="1.1" fill="var(--pop-bg)"/></svg><span>Fish & aquatic life</span></li><li class="hz" title="Plants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21v-7.2C6.2 13.6 3.5 10.6 3.5 5.5c4.6 0 7.3 2.4 7.9 6.3.9-4.5 4-7.3 9.1-7.3 0 5.6-3 8.8-7.9 9.1V21z"/></svg><span>Plants</span></li></ul>
-          <p class="pop-t">No safe level of exposure is known. Damages developing brains, lowering IQ in children, and harms kidneys and blood.</p>
+          <p class="pop-t"><b class="k-hit">No safe level of exposure is known.</b> Damages developing brains, <b class="k-iq">lowering IQ in children</b>, and harms kidneys and blood.</p>
           <p class="pop-l"><a href="https://www.epa.gov/lead" target="_blank" rel="noopener">EPA: Lead ↗</a><a href="https://en.wikipedia.org/wiki/Lead" target="_blank" rel="noopener">Wikipedia ↗</a></p>
         </div>
       </div>
       <div class="tile as" tabindex="0" role="button" aria-expanded="false" aria-label="Arsenic: health warnings and links">
         <span class="num">33</span><span class="sym">As</span><span class="name">Arsenic</span><span class="pct">trace</span>
         <div class="pop" role="group" aria-label="Arsenic warnings">
-          <p class="pop-h">Harmful to</p>
+          <p class="pop-h"><span class="pop-warn" aria-hidden="true">⚠</span>Harmful to</p>
           <ul class="hzs"><li class="hz" title="People"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6" r="3.2"/><path d="M5.5 21v-4.5a6.5 6.5 0 0 1 13 0V21z"/></svg><span>People</span></li><li class="hz" title="Fish & aquatic life"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12c3-4.2 7.5-6 11.5-4.6 2 .7 3.6 2 4.8 3.4L22 7.5v9l-3.2-3.3c-1.2 1.4-2.8 2.7-4.8 3.4C10 18 5.5 16.2 2.5 12z"/><circle cx="7.4" cy="11" r="1.1" fill="var(--pop-bg)"/></svg><span>Fish & aquatic life</span></li><li class="hz" title="Plants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21v-7.2C6.2 13.6 3.5 10.6 3.5 5.5c4.6 0 7.3 2.4 7.9 6.3.9-4.5 4-7.3 9.1-7.3 0 5.6-3 8.8-7.9 9.1V21z"/></svg><span>Plants</span></li><li class="hz canc"><span class="ctag">C</span><span>Causes cancer</span></li></ul>
-          <p class="pop-t">A known cause of skin, bladder and lung cancer. Long-term exposure also damages nerves, skin and blood vessels.</p>
+          <p class="pop-t">A known cause of skin, bladder and lung <span class="k-cancer">cancer</span>. Long-term exposure also <b class="k-hit">damages nerves</b>, skin and blood vessels.</p>
           <p class="pop-l"><a href="https://wwwn.cdc.gov/TSP/substances/ToxSubstance.aspx?toxid=3" target="_blank" rel="noopener">CDC/ATSDR: Arsenic ↗</a><a href="https://en.wikipedia.org/wiki/Arsenic" target="_blank" rel="noopener">Wikipedia ↗</a></p>
         </div>
       </div>
       <div class="tile cd" tabindex="0" role="button" aria-expanded="false" aria-label="Cadmium: health warnings and links">
         <span class="num">48</span><span class="sym">Cd</span><span class="name">Cadmium</span><span class="pct">trace</span>
         <div class="pop" role="group" aria-label="Cadmium warnings">
-          <p class="pop-h">Harmful to</p>
+          <p class="pop-h"><span class="pop-warn" aria-hidden="true">⚠</span>Harmful to</p>
           <ul class="hzs"><li class="hz" title="People"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6" r="3.2"/><path d="M5.5 21v-4.5a6.5 6.5 0 0 1 13 0V21z"/></svg><span>People</span></li><li class="hz" title="Fish & aquatic life"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12c3-4.2 7.5-6 11.5-4.6 2 .7 3.6 2 4.8 3.4L22 7.5v9l-3.2-3.3c-1.2 1.4-2.8 2.7-4.8 3.4C10 18 5.5 16.2 2.5 12z"/><circle cx="7.4" cy="11" r="1.1" fill="var(--pop-bg)"/></svg><span>Fish & aquatic life</span></li><li class="hz" title="Plants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21v-7.2C6.2 13.6 3.5 10.6 3.5 5.5c4.6 0 7.3 2.4 7.9 6.3.9-4.5 4-7.3 9.1-7.3 0 5.6-3 8.8-7.9 9.1V21z"/></svg><span>Plants</span></li><li class="hz canc"><span class="ctag">C</span><span>Causes cancer</span></li></ul>
-          <p class="pop-t">A known human carcinogen. Builds up in the kidneys and bones, causing kidney failure and brittle bones.</p>
+          <p class="pop-t">A known human <span class="k-cancer">carcinogen</span>. Builds up in the kidneys and bones, causing <b class="k-hit">kidney failure</b> and <b class="k-hit">brittle bones</b>.</p>
           <p class="pop-l"><a href="https://wwwn.cdc.gov/TSP/substances/ToxSubstance.aspx?toxid=15" target="_blank" rel="noopener">CDC/ATSDR: Cadmium ↗</a><a href="https://en.wikipedia.org/wiki/Cadmium" target="_blank" rel="noopener">Wikipedia ↗</a></p>
         </div>
       </div>
       <div class="tile zn" tabindex="0" role="button" aria-expanded="false" aria-label="Zinc: health warnings and links">
         <span class="num">30</span><span class="sym">Zn</span><span class="name">Zinc</span><span class="pct">trace</span>
         <div class="pop" role="group" aria-label="Zinc warnings">
-          <p class="pop-h">Harmful to</p>
+          <p class="pop-h"><span class="pop-warn" aria-hidden="true">⚠</span>Harmful to</p>
           <ul class="hzs"><li class="hz mild" title="People: in excess"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6" r="3.2"/><path d="M5.5 21v-4.5a6.5 6.5 0 0 1 13 0V21z"/></svg><span>People<em> (in excess)</em></span></li><li class="hz" title="Fish & aquatic life"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12c3-4.2 7.5-6 11.5-4.6 2 .7 3.6 2 4.8 3.4L22 7.5v9l-3.2-3.3c-1.2 1.4-2.8 2.7-4.8 3.4C10 18 5.5 16.2 2.5 12z"/><circle cx="7.4" cy="11" r="1.1" fill="var(--pop-bg)"/></svg><span>Fish & aquatic life</span></li><li class="hz" title="Plants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21v-7.2C6.2 13.6 3.5 10.6 3.5 5.5c4.6 0 7.3 2.4 7.9 6.3.9-4.5 4-7.3 9.1-7.3 0 5.6-3 8.8-7.9 9.1V21z"/></svg><span>Plants</span></li></ul>
-          <p class="pop-t">Part of a healthy diet, but too much in water harms fish and stops plant growth.</p>
+          <p class="pop-t">Part of a healthy diet, but too much in water <b class="k-hit">harms fish</b> and <b class="k-hit">stops plant growth</b>.</p>
           <p class="pop-l"><a href="https://wwwn.cdc.gov/TSP/substances/ToxSubstance.aspx?toxid=54" target="_blank" rel="noopener">CDC/ATSDR: Zinc ↗</a><a href="https://en.wikipedia.org/wiki/Zinc" target="_blank" rel="noopener">Wikipedia ↗</a></p>
         </div>
       </div>
@@ -1224,7 +1249,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
           {id:'slag-glow',type:'line',source:'slag',paint:{'line-color':'#9fd9c8','line-width':6,'line-blur':5,'line-opacity':0.5}},
           {id:'slag-edge',type:'line',source:'slag',paint:{'line-color':'#e8fff7','line-width':1.5,'line-opacity':0.8}}
         ],
-        terrain:{source:'dem',exaggeration:2.5}
+        terrain:{source:'dem',exaggeration:1.15}
       }});
     el._map=map;
     map.addControl(new maplibregl.NavigationControl({visualizePitch:true}),'top-right');
@@ -1254,7 +1279,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
     function tagVis(){ el.classList.toggle('close', map.getZoom()>=14.4); }
     map.on('zoom',tagVis); map.on('moveend',tagVis);
     var flying=false;
-    var TERRAIN={source:'dem',exaggeration:2.5};
+    var TERRAIN={source:'dem',exaggeration:1.15};
     function flyIn(){ flying=true; userPaused=false; map.setTerrain(null); map.jumpTo(START); tagVis();
       map.flyTo(Object.assign({},VIEW,{duration:still?2500:5500,curve:1.6,essential:true}));
       map.once('moveend',function(){ flying=false; map.setTerrain(TERRAIN); tagVis(); }); }
