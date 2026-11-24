@@ -351,6 +351,16 @@ blockquote cite{display:block;font:400 .82rem/1.4 var(--mono);font-style:normal;
 .sources ol{margin:1.4rem 0 0;padding-left:1.3rem;display:grid;gap:.55rem;font-size:.92rem}
 .sources li{overflow-wrap:anywhere}
 footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
+/* runoff loop animation */
+.runoff{margin:2.5rem 0 0;border:1px solid var(--line);background:var(--surface)}
+.runoff svg{display:block;width:100%;height:auto;background:#cfdad6}
+.runoff-bar{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;padding:.8rem 1rem;border-top:1px solid var(--line)}
+.runoff-steps{display:flex;flex-wrap:wrap;gap:.35rem;list-style:none;margin:0;padding:0;flex:1 1 auto}
+.runoff-steps li{font:500 .72rem/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;padding:.4rem .55rem;border:1px solid var(--line);color:var(--muted);transition:background .3s,color .3s,border-color .3s}
+.runoff-steps li.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.runoff-cap{flex:1 1 100%;margin:0;font-size:.95rem;min-height:2.6em}
+.runoff-btn{font:600 .75rem/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;padding:.5rem .8rem;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.runoff-btn:hover{background:var(--ink);color:var(--bg)}
 </style>
 </head>
 <body>
@@ -557,6 +567,65 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
         <figcaption>Runoff pooling on the slag field beside the Portage.</figcaption>
       </figure>
     </div>
+
+    <figure class="runoff" id="runoff" aria-label="Animation: how rain, snow and freeze-thaw wash metals from the slag pile into the water">
+      <svg viewBox="0 0 800 360" role="img" aria-labelledby="runoff-t">
+        <title id="runoff-t">A black slag pile beside the water goes through rain, snow and thaw. The rock cracks, rain washes metal-laden runoff into the water, fish die and a person fishing gets sick.</title>
+        <defs>
+          <linearGradient id="ro-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9cbc7"/><stop offset="1" stop-color="#e4ebe8"/></linearGradient>
+          <linearGradient id="ro-pile" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b413f"/><stop offset=".45" stop-color="#151918"/><stop offset="1" stop-color="#262b29"/></linearGradient>
+          <linearGradient id="ro-oil" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7a5a24"/><stop offset=".35" stop-color="#9b6b8f"/><stop offset=".7" stop-color="#5f9a6b"/><stop offset="1" stop-color="#8a5b2a"/></linearGradient>
+          <radialGradient id="ro-plume"><stop offset="0" stop-color="#8f5e25" stop-opacity=".85"/><stop offset=".6" stop-color="#6d7f3c" stop-opacity=".5"/><stop offset="1" stop-color="#6d7f3c" stop-opacity="0"/></radialGradient>
+          <clipPath id="ro-water"><rect x="540" y="272" width="200" height="88"/></clipPath>
+        </defs>
+        <g id="ro-scene">
+          <rect width="800" height="360" fill="url(#ro-sky)"/>
+          <rect id="ro-dark" width="800" height="360" fill="#2c3936" opacity="0"/>
+          <g id="ro-clouds" opacity="0">
+            <ellipse cx="160" cy="40" rx="150" ry="38" fill="#5c6a67"/><ellipse cx="330" cy="30" rx="170" ry="40" fill="#4e5b58"/>
+            <ellipse cx="520" cy="42" rx="160" ry="36" fill="#58665f"/><ellipse cx="700" cy="30" rx="150" ry="40" fill="#4c5956"/>
+          </g>
+          <rect x="540" y="272" width="200" height="88" fill="#3f7f95"/>
+          <rect id="ro-sheen" x="540" y="272" width="200" height="3" fill="#bfe3ee" opacity=".7"/>
+          <ellipse id="ro-plumeE" cx="575" cy="290" rx="0" ry="0" fill="url(#ro-plume)" clip-path="url(#ro-water)"/>
+          <g id="ro-fish" clip-path="url(#ro-water)"></g>
+          <path d="M0 250 H500 C528 250 545 260 562 272 L562 360 H0Z" fill="#6f7a52"/>
+          <path d="M0 262 H520 L548 276 L548 360 H0Z" fill="#5d6744" opacity=".6"/>
+          <path d="M728 360 V274 C742 266 760 263 800 263 V360Z" fill="#6f7a52"/>
+          <path id="ro-run" d="M415 251 C450 254 480 252 505 254 C530 257 548 266 568 280" fill="none" stroke="url(#ro-oil)" stroke-width="7" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <path d="M120 252 C150 210 190 150 245 118 C270 104 292 106 312 124 C350 158 392 214 430 252Z" fill="url(#ro-pile)"/>
+          <path d="M170 252 C200 222 215 196 238 186 L262 196 C300 210 330 238 350 252Z" fill="#0e1110" opacity=".55"/>
+          <g id="ro-glint" fill="#e9f1ee"><circle cx="232" cy="140" r="1.6"/><circle cx="300" cy="150" r="1.3"/><circle cx="270" cy="200" r="1.5"/><circle cx="352" cy="200" r="1.2"/><circle cx="190" cy="214" r="1.4"/></g>
+          <path id="ro-snowcap" d="M196 168 C214 146 228 128 246 118 C270 104 292 106 312 124 C328 138 345 156 362 178 C346 172 336 180 322 172 C308 182 296 170 282 178 C268 168 254 182 240 172 C226 180 212 170 196 168Z" fill="#f4f8f7" opacity="0"/>
+          <g id="ro-cracks" fill="none" stroke="#c9d6d2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M262 122 L270 146 L262 166 L276 190 L270 214"/>
+            <path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M328 150 L340 172 L334 190 L350 212 L362 230"/>
+            <path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M210 190 L222 206 L214 226 L226 244"/>
+            <path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M372 196 L386 214 L396 232"/>
+          </g>
+          <g id="ro-chunks" fill="#1c2120" stroke="#3d4442" stroke-width="1"></g>
+          <g id="ro-person">
+            <g id="ro-rod"><line x1="752" y1="218" x2="700" y2="190" stroke="#3a2d20" stroke-width="2"/>
+            <path d="M700 190 Q690 240 680 284" fill="none" stroke="#2b2b2b" stroke-width=".8"/></g>
+            <g id="ro-body">
+              <rect x="756" y="212" width="16" height="30" rx="5" fill="#b4442c"/>
+              <rect x="757" y="240" width="6" height="24" fill="#2e3a4f"/><rect x="765" y="240" width="6" height="24" fill="#2e3a4f"/>
+              <line x1="758" y1="220" x2="750" y2="220" stroke="#b4442c" stroke-width="5" stroke-linecap="round"/>
+              <circle id="ro-head" cx="764" cy="202" r="9" fill="#e0b38f"/>
+              <g id="ro-sick" opacity="0" fill="none" stroke="#5c8a2e" stroke-width="2" stroke-linecap="round"><path d="M756 184 q4 -5 8 0 q4 5 8 0"/><path d="M759 176 q3 -4 6 0 q3 4 6 0"/></g>
+            </g>
+          </g>
+          <g id="ro-rain" stroke="#dbe9f0" stroke-width="1.4" stroke-linecap="round"></g>
+          <g id="ro-snow" fill="#ffffff"></g>
+        </g>
+        <rect id="ro-fade" width="800" height="360" fill="#cfdad6" opacity="0" pointer-events="none"/>
+      </svg>
+      <div class="runoff-bar">
+        <ol class="runoff-steps" aria-hidden="true"><li>Rain</li><li>Snow</li><li>Freeze &amp; thaw</li><li>Runoff</li><li>Fish &amp; people</li></ol>
+        <button type="button" class="runoff-btn" id="runoff-btn" aria-pressed="false">Pause</button>
+        <p class="runoff-cap" id="runoff-cap">Rain soaks into the pile and starts to pull metals out of the rock.</p>
+      </div>
+    </figure>
 
     <div class="col stack" style="margin-top:3rem">
       <h3>What these metals do to people</h3>
@@ -1098,6 +1167,103 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
     var io=new IntersectionObserver(function(es){ if(es.some(function(x){return x.isIntersecting;})){ io.disconnect(); load(); } },{rootMargin:'400px'});
     io.observe(el);
   } else load();
+})();
+</script>
+<script>
+(function(){
+  var fig=document.getElementById('runoff'); if(!fig) return;
+  var NS='http://www.w3.org/2000/svg', $=function(id){return document.getElementById(id)};
+  var L=18, rain=$('ro-rain'), snow=$('ro-snow'), fishG=$('ro-fish'), chunkG=$('ro-chunks');
+  var steps=fig.querySelectorAll('.runoff-steps li'), cap=$('runoff-cap'), btn=$('runoff-btn');
+  var cracks=$('ro-cracks').querySelectorAll('path');
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);(p||null)&&p.appendChild(e);return e}
+  function r(a,b,t){return Math.max(0,Math.min(1,(t-a)/(b-a)))}
+  function ez(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2}
+  var seed=7; function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
+  var drops=[],flakes=[],fish=[],chunks=[];
+  for(var i=0;i<110;i++){drops.push({x:rnd()*840-20,y:rnd()*360,v:420+rnd()*200,e:el('line',{x1:0,y1:0,x2:-4,y2:14},rain)})}
+  for(i=0;i<60;i++){flakes.push({x:rnd()*800,y:rnd()*360,v:30+rnd()*30,s:rnd()*6,r:1.4+rnd()*1.8,e:el('circle',{r:2},snow)})}
+  [[600,312,1],[660,330,-1],[700,300,1]].forEach(function(f,k){
+    var g=el('g',{},fishG);
+    var b=el('path',{d:'M-14 0 C-8 -8 8 -8 14 0 C8 8 -8 8 -14 0Z M14 0 L24 -7 L24 7Z',fill:'#e08a4f'},g);
+    var eye=el('circle',{cx:-8,cy:-2,r:1.6,fill:'#1b1b1b'},g);
+    fish.push({x:f[0],y:f[1],d:f[2],k:k,g:g,b:b});
+  });
+  [[392,214,9],[372,232,7],[404,236,6],[356,244,8],[384,246,5]].forEach(function(c,k){
+    var s=c[2], g=el('polygon',{points:(-s)+','+(s*.3)+' '+(-s*.4)+','+(-s)+' '+(s*.8)+','+(-s*.6)+' '+s+','+(s*.5)+' '+(s*.1)+','+s},chunkG);
+    chunks.push({x:c[0],y:c[1],tx:505+k*12,ty:254+k*2.5,g:g,k:k});
+  });
+  var caps=['Rain soaks into the pile and starts to pull metals out of the rock.',
+    'Snow piles up and melts into the cracks of the slag.',
+    'Meltwater freezes and expands, cracking the rock into smaller pieces. Smaller pieces mean more surface for metals to leach from.',
+    'Heavy rain washes the broken slag and metal-laden runoff downhill into the water.',
+    'Metals build up in the water. Fish die, and people who fish and swim here are exposed.'];
+  var cur=-1;
+  function stage(t){return t<5?0:t<8.5?1:t<10.5?2:t<13?3:4}
+  function frame(t){
+    var rain1=r(1.5,2.5,t)*(1-r(4.5,5.2,t)), rain2=r(10.3,11,t)*(1-r(14.5,15.5,t));
+    var storm=Math.max(rain1*.75,rain2,r(5,6,t)*(1-r(8,8.8,t))*.45);
+    $('ro-dark').setAttribute('opacity',(storm*.45).toFixed(3));
+    $('ro-clouds').setAttribute('opacity',(Math.max(storm,0)*0.95).toFixed(3));
+    var n=Math.round(rain1*55+rain2*110);
+    drops.forEach(function(d,i){
+      if(i>=n){d.e.setAttribute('opacity',0);return}
+      var y=(d.y+t*d.v)%380-10, x=d.x-(y*.25)%1;
+      d.e.setAttribute('transform','translate('+(d.x+y*.12).toFixed(1)+','+y.toFixed(1)+')');
+      d.e.setAttribute('opacity',.75);
+    });
+    var sn=r(5,5.8,t)*(1-r(8.3,9,t));
+    flakes.forEach(function(f){
+      var y=(f.y+t*f.v)%370-5, x=f.x+Math.sin(t*1.5+f.s)*8;
+      f.e.setAttribute('cx',x.toFixed(1));f.e.setAttribute('cy',y.toFixed(1));f.e.setAttribute('r',f.r);
+      f.e.setAttribute('opacity',(sn*.9).toFixed(2));
+    });
+    $('ro-snowcap').setAttribute('opacity',(r(5.6,8,t)*(1-r(8.6,10,t))).toFixed(2));
+    cracks.forEach(function(c,i){
+      var a=8.7+i*.35; c.setAttribute('stroke-dashoffset',(1-ez(r(a,a+.6,t))).toFixed(3));
+      c.setAttribute('opacity',(1-r(17,17.6,t)).toFixed(2));
+    });
+    chunks.forEach(function(c){
+      var b=ez(r(9.4+c.k*.15,10.2+c.k*.15,t)), m=ez(r(11+c.k*.25,13+c.k*.25,t));
+      var x=c.x+b*6+(c.tx-c.x)*m, y=c.y+b*4+(c.ty-c.y)*m - Math.sin(m*Math.PI)*4;
+      c.g.setAttribute('transform','translate('+x.toFixed(1)+','+y.toFixed(1)+') rotate('+(m*260+b*20).toFixed(0)+')');
+      c.g.setAttribute('opacity',(r(9.3,9.5,t)).toFixed(2));
+    });
+    var ru=ez(r(10.8,12.4,t));$('ro-run').setAttribute('stroke-dashoffset',(1-ru).toFixed(3));$('ro-run').setAttribute('opacity',ru>.01?(1-r(17,17.6,t)).toFixed(2):0);
+    var pl=ez(r(11.8,15,t));
+    $('ro-plumeE').setAttribute('rx',(pl*170).toFixed(1));$('ro-plumeE').setAttribute('ry',(pl*55).toFixed(1));
+    $('ro-sheen').setAttribute('fill',pl>.2?'#c9b07a':'#bfe3ee');
+    fish.forEach(function(f){
+      var die=ez(r(13.3+f.k*.4,14.6+f.k*.4,t));
+      var sw=Math.sin(t*(0.9+f.k*.2)+f.k*2)*22*(1-die);
+      var x=f.x+sw, y=f.y+(278-f.y)*die;
+      var dir=Math.cos(t*(0.9+f.k*.2)+f.k*2)>=0?1:-1; if(die>0) dir=f.d;
+      f.g.setAttribute('transform','translate('+x.toFixed(1)+','+y.toFixed(1)+') scale('+(-dir)+','+(1-2*die).toFixed(2)+')');
+      var g=Math.round(224-die*90), gg=Math.round(138-die*10*0), bb=Math.round(79+die*55);
+      f.b.setAttribute('fill','rgb('+g+','+Math.round(138+die*(140-138))+','+bb+')');
+    });
+    var sick=ez(r(14.6,15.8,t));
+    $('ro-body').setAttribute('transform','rotate('+(sick*14).toFixed(1)+' 764 264)');
+    $('ro-head').setAttribute('fill',sick>.05?'rgb('+Math.round(224-sick*60)+','+Math.round(179+sick*10)+','+Math.round(143-sick*40)+')':'#e0b38f');
+    $('ro-sick').setAttribute('opacity',sick.toFixed(2));
+    $('ro-sick').setAttribute('transform','translate(0,'+(Math.sin(t*4)*2).toFixed(1)+')');
+    $('ro-rod').setAttribute('transform','rotate('+(-sick*18).toFixed(1)+' 752 218)');
+    $('ro-fade').setAttribute('opacity',Math.max(r(17.2,18,t),1-r(0,.8,t)).toFixed(2));
+    var s=stage(t); if(s!==cur){cur=s;steps.forEach(function(li,i){li.classList.toggle('on',i===s)});cap.textContent=caps[s];}
+  }
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var playing=!reduce, inView=false, visible=false, t0=null, t=reduce?15.9:0, last=null, raf=null;
+  function loop(now){
+    raf=null; if(!playing||!visible) {last=null;return}
+    if(last!=null) t=(t+Math.min(.1,(now-last)/1000))%L; last=now;
+    frame(t); raf=requestAnimationFrame(loop);
+  }
+  function kick(){ if(!raf&&playing&&visible) raf=requestAnimationFrame(loop) }
+  function setBtn(){btn.textContent=playing?'Pause':'Play';btn.setAttribute('aria-pressed',playing?'false':'true')}
+  btn.addEventListener('click',function(){playing=!playing;setBtn();if(playing)kick();});
+  setBtn(); frame(t);
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){inView=es[0].isIntersecting;visible=inView&&!document.hidden;kick()},{threshold:.15}).observe(fig)}else{inView=visible=true;kick()}
+  document.addEventListener('visibilitychange',function(){visible=inView&&!document.hidden;kick()});
 })();
 </script>
 </body>
