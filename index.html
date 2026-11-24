@@ -6,6 +6,20 @@
 <title>Quincy Beach</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="The Quincy smelter slag fields sit on the Portage waterfront in Houghton County. Learn why the slag is a problem, how it got there, and a plan to sell it off and build a beach.">
+<link rel="icon" type="image/png" sizes="32x32" href="quincy-beach-site/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="quincy-beach-site/favicon-192.png">
+<link rel="apple-touch-icon" href="quincy-beach-site/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://buildqunicybeach.org/">
+<link rel="canonical" href="https://buildqunicybeach.org/">
+<meta property="og:title" content="Quincy Beach: from smelter slag to a public beach">
+<meta property="og:description" content="The Quincy smelter slag piles sit on the Keweenaw Waterway in Houghton County. Learn why they're a problem and the plan to sell the slag and build a beach.">
+<meta property="og:image" content="https://buildqunicybeach.org/quincy-beach-site/sharescreen.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Quincy Beach: a drawing of the old Quincy smelter beside the Portage">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://buildqunicybeach.org/quincy-beach-site/sharescreen.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -359,6 +373,24 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
 .runoff-cap{flex:1 1 100%;margin:0;font-size:.95rem;min-height:2.6em}
 .runoff-btn{font:600 .75rem/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;padding:.5rem .8rem;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
 .runoff-btn:hover{background:var(--ink);color:var(--bg)}
+/* share */
+.share{background:var(--surface);border-top:1px solid var(--line)}
+.share-grid{display:grid;gap:2rem;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;margin-top:1.6rem}
+@media (max-width:820px){.share-grid{grid-template-columns:minmax(0,1fr)}}
+.share-btns{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
+.share-btn{display:inline-flex;align-items:center;gap:.45rem;font:600 .9rem/1 var(--body);padding:.7rem 1rem;border:1px solid var(--ink);background:transparent;color:var(--ink);text-decoration:none;cursor:pointer;border-radius:2px}
+.share-btn:hover{background:var(--ink);color:var(--bg)}
+.share-btn[hidden]{display:none}
+.share-btn.primary{background:var(--verdigris);border-color:var(--verdigris);color:#fff}
+.share-btn.primary:hover{filter:brightness(1.1)}
+.share-btn svg{width:18px;height:18px;fill:currentColor;flex:none}
+.share-msg{margin-top:1.6rem}
+.share-msg label{display:block;font:500 .75rem/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.5rem}
+.share-msg textarea{width:100%;box-sizing:border-box;min-height:7.5rem;font:400 .95rem/1.45 var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);padding:.8rem;resize:vertical}
+.share-card{margin:0}
+.share-card img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+.share-card figcaption{font-size:.82rem;color:var(--muted);margin-top:.5rem}
+.share-status{font-size:.85rem;color:var(--verdigris);min-height:1.2em;margin:.6rem 0 0}
 </style>
 </head>
 <body>
@@ -373,6 +405,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
       <li><a href="#epa">The EPA</a></li>
       <li><a href="#plan">The plan</a></li>
       <li><a href="#involved">Get involved</a></li>
+      <li><a href="#share">Share</a></li>
     </ul>
   </div>
 </nav>
@@ -988,11 +1021,43 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
       <p class="lede">This isn't a money-driven effort. The goal is that the people of Houghton, who have lived next to this slag for decades, are the ones who benefit from removing it.</p>
       <p>Here's how you can help right now:</p>
       <ul>
-        <li>Share this page with friends, neighbors and local groups.</li>
+        <li><a href="#share">Share this page</a> with friends, neighbors and local groups.</li>
         <li>Bring up the Quincy slag with your township, city council and state representatives.</li>
         <li>If you research geology, water quality or mining waste, we'd like to talk about testing.</li>
       </ul>
       <p><strong>Contact:</strong> details coming soon.</p>
+    </div>
+  </div>
+</section>
+
+<section class="share" id="share">
+  <div class="wrap">
+    <div class="col stack">
+      <p class="eyebrow">Share</p>
+      <h2>Know someone who swims, fishes or lives near the Portage?</h2>
+      <p class="lede">Pass this page along to a neighbor, a teacher, a township board member or a local group. Every person who learns about the slag makes the cleanup more likely.</p>
+    </div>
+    <div class="share-grid">
+      <div>
+        <div class="share-btns">
+          <button type="button" class="share-btn primary" id="share-native" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16a3 3 0 0 0-2.4 1.2l-6.7-3.4a3 3 0 0 0 0-1.6l6.7-3.4A3 3 0 1 0 15 7l-6.7 3.4a3 3 0 1 0 0 3.2L15 17a3 3 0 1 0 3-1z"/></svg>Share…</button>
+          <button type="button" class="share-btn" id="share-copy"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 13.4a1 1 0 0 0 1.4 1.4l4.9-4.9a3.5 3.5 0 0 0-5-5L9.8 7a1 1 0 1 0 1.4 1.4l2.1-2.1a1.5 1.5 0 0 1 2.1 2.1zm2.8-2.8a1 1 0 0 0-1.4-1.4l-4.9 4.9a3.5 3.5 0 0 0 5 5l2.1-2.1a1 1 0 1 0-1.4-1.4l-2.1 2.1a1.5 1.5 0 0 1-2.1-2.1z"/></svg>Copy link</button>
+          <a class="share-btn" id="share-email" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.4V17h16V7.4l-8 5.3zM5.6 7 12 11.3 18.4 7z"/></svg>Email</a>
+          <a class="share-btn" id="share-sms" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm3 6.5a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01z"/></svg>Text</a>
+          <a class="share-btn" id="share-fb" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v9h4v-9h3l.5-4h-3.5V9c0-.6.4-1 1-1z"/></svg>Facebook</a>
+          <a class="share-btn" id="share-li" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3 8.5h3V21H3zm5.5 0h2.9v1.7h.1c.4-.8 1.4-1.9 3.1-1.9 3.3 0 3.9 2.2 3.9 5V21h-3v-6.8c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5V21h-3z"/></svg>LinkedIn</a>
+        </div>
+        <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+        <div class="share-msg">
+          <label for="share-text">Ready-made message</label>
+          <textarea id="share-text" readonly></textarea>
+          <div class="share-btns" style="margin-top:.6rem"><button type="button" class="share-btn" id="share-copy-msg">Copy message</button></div>
+        </div>
+      </div>
+      <figure class="share-card">
+        <img src="quincy-beach-site/sharescreen.jpg" alt="Link preview: Quincy Beach, from smelter slag to a public beach on the Portage, with a drawing of the old smelter" width="1200" height="630" loading="lazy">
+        <figcaption>This is the preview people see when you share the link.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -1442,6 +1507,27 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
   window.__runoff=function(x){t=x;frame(x)};
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){inView=es[0].isIntersecting;visible=inView&&!document.hidden;kick()},{threshold:.15}).observe(fig)}else{inView=visible=true;kick()}
   document.addEventListener('visibilitychange',function(){visible=inView&&!document.hidden;kick()});
+})();
+</script>
+<script>
+(function(){
+  var url=location.href.split('#')[0].split('?')[0], title='Quincy Beach: from smelter slag to a public beach';
+  var msg='The Quincy smelter slag piles have sat on the Keweenaw Waterway for over a century. Here\'s why that matters, and a plan to sell the slag and build a public beach on the Portage: '+url;
+  var $=function(id){return document.getElementById(id)}, st=$('share-status'), ta=$('share-text');
+  if(!ta) return;
+  ta.value=msg;
+  $('share-email').href='mailto:?subject='+encodeURIComponent(title)+'&body='+encodeURIComponent(msg);
+  $('share-sms').href='sms:?&body='+encodeURIComponent(msg);
+  $('share-fb').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url);
+  $('share-li').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url);
+  function say(t){ st.textContent=t; clearTimeout(say.t); say.t=setTimeout(function(){st.textContent=''},3000); }
+  function copy(text,done){
+    if(navigator.clipboard&&window.isSecureContext){ navigator.clipboard.writeText(text).then(function(){say(done)},fallback); } else fallback();
+    function fallback(){ var t=document.createElement('textarea'); t.value=text; t.setAttribute('readonly',''); t.style.position='fixed'; t.style.opacity='0'; document.body.appendChild(t); t.select(); try{document.execCommand('copy');say(done)}catch(e){say('Press Ctrl+C to copy')} document.body.removeChild(t); }
+  }
+  $('share-copy').addEventListener('click',function(){copy(url,'Link copied.')});
+  $('share-copy-msg').addEventListener('click',function(){copy(msg,'Message copied.')});
+  if(navigator.share){ var n=$('share-native'); n.hidden=false; n.addEventListener('click',function(){ navigator.share({title:title,text:msg.replace(' '+url,''),url:url}).catch(function(){}); }); }
 })();
 </script>
 </body>
