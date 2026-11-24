@@ -123,7 +123,9 @@ figcaption{font-size:.85rem;color:var(--muted);margin-top:.6rem;line-height:1.45
 .map3d-msg{position:absolute;inset:0;display:grid;place-items:center;padding:1.5rem;text-align:center;color:#eef2f0;font-size:.95rem;z-index:2}
 .map3d-msg[hidden]{display:none}
 .map3d-msg a{color:#f0c98d}
-.slag-tag{font:600 .72rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#e8fff7;background:rgba(5,8,7,.78);border:1px solid rgba(159,217,200,.55);padding:.35rem .5rem;white-space:nowrap;pointer-events:none}
+.slag-tag{display:flex;flex-direction:column;gap:.2rem;font:500 .72rem/1.15 var(--mono);color:#cfe8df;background:rgba(5,8,7,.82);border:1px solid rgba(159,217,200,.55);padding:.45rem .6rem;white-space:nowrap;pointer-events:none;opacity:0;transform:translateY(6px) scale(.96);transition:opacity .6s ease,transform .6s ease}
+.slag-tag b{font:800 .95rem/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.map3d.close .slag-tag{opacity:1;transform:none}
 .map3d-bar{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;padding:.7rem}
 .map-btn{font:600 .85rem/1 var(--body);padding:.6rem .85rem;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;border-radius:2px}
 .map-btn:hover{border-color:var(--verdigris)}
@@ -384,7 +386,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
     <div class="col stack">
       <p class="eyebrow">Explore the site</p>
       <h2>The slag fields in 3D</h2>
-      <p class="lede">Aerial imagery draped over real elevation data for the Quincy smelter and its slag fields, with Houghton across the water. The slag piles are shaded in shimmering black, and the dashed copper line marks the project area.</p>
+      <p class="lede">Aerial imagery draped over real elevation data for the Quincy smelter and its slag fields, with Houghton across the water. Watch it fly in from across Michigan. The slag piles are shaded in shimmering black, and the dashed copper line marks the project area.</p>
     </div>
     <div class="map3d-wrap">
       <div class="map3d" id="map3d" role="region" aria-label="3D map of the Quincy smelter and slag fields">
@@ -393,11 +395,12 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
       <div class="map3d-bar">
         <button type="button" class="map-btn" id="map-spin" aria-pressed="true">Pause rotation</button>
         <button type="button" class="map-btn" id="map-top">Top-down view</button>
+        <button type="button" class="map-btn" id="map-replay">Replay zoom-in</button>
         <button type="button" class="map-btn" id="map-reset">Reset view</button>
         <span class="map-hint">Drag to move. Right-drag or two fingers to tilt and turn.</span>
       </div>
     </div>
-    <p class="small muted" style="margin-top:.6rem">Imagery: USGS The National Map (public domain). Elevation: AWS Terrain Tiles from USGS 3DEP. Heights are exaggerated 2.5× so the slag piles stand out.</p>
+    <p class="small muted" style="margin-top:.6rem">Imagery: USGS The National Map (public domain). Elevation: AWS Terrain Tiles from USGS 3DEP. Heights are exaggerated 2.5× so the slag piles stand out. Slag weights are this project's rough estimates from aerial measurements.</p>
   </div>
 </section>
 
@@ -893,7 +896,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
   var el=document.getElementById('map3d'); if(!el) return;
   var msg=document.getElementById('map3d-msg'), started=false;
   var CENTER=[-88.56187,47.12587], VIEW={center:CENTER,zoom:15.4,pitch:62,bearing:160};
-  var SLAG={"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"Lower slag field"},"geometry":{"type":"Polygon","coordinates":[[[-88.561255,47.125757],[-88.561255,47.125696],[-88.56117,47.125653],[-88.561121,47.125592],[-88.560938,47.125532],[-88.560926,47.125453],[-88.560878,47.125419],[-88.560731,47.125367],[-88.560512,47.125323],[-88.560354,47.125184],[-88.560269,47.125184],[-88.560098,47.125297],[-88.560086,47.125566],[-88.560123,47.12567],[-88.56022,47.125749],[-88.560415,47.125844],[-88.560597,47.125896],[-88.560804,47.125896],[-88.560999,47.125853],[-88.561255,47.125757]]]}},{"type":"Feature","properties":{"name":"Upper slag field"},"geometry":{"type":"Polygon","coordinates":[[[-88.563069,47.126564],[-88.563325,47.126712],[-88.56363,47.126773],[-88.563995,47.126781],[-88.564214,47.126712],[-88.564372,47.126616],[-88.564567,47.126451],[-88.564653,47.126339],[-88.564665,47.126052],[-88.564616,47.125957],[-88.564385,47.125853],[-88.56408,47.125853],[-88.563764,47.125887],[-88.563447,47.125974],[-88.563167,47.126096],[-88.562996,47.126252],[-88.562984,47.126347],[-88.563069,47.126564]]]}}]};
+  var SLAG={"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"Lower slag field","wt":"21–46 million lb of slag","tons":"≈ 11,000–23,000 tons"},"geometry":{"type":"Polygon","coordinates":[[[-88.561255,47.125757],[-88.561255,47.125696],[-88.56117,47.125653],[-88.561121,47.125592],[-88.560938,47.125532],[-88.560926,47.125453],[-88.560878,47.125419],[-88.560731,47.125367],[-88.560512,47.125323],[-88.560354,47.125184],[-88.560269,47.125184],[-88.560098,47.125297],[-88.560086,47.125566],[-88.560123,47.12567],[-88.56022,47.125749],[-88.560415,47.125844],[-88.560597,47.125896],[-88.560804,47.125896],[-88.560999,47.125853],[-88.561255,47.125757]]]}},{"type":"Feature","properties":{"name":"Upper slag field","wt":"76–138 million lb of slag","tons":"≈ 38,000–69,000 tons"},"geometry":{"type":"Polygon","coordinates":[[[-88.563069,47.126564],[-88.563325,47.126712],[-88.56363,47.126773],[-88.563995,47.126781],[-88.564214,47.126712],[-88.564372,47.126616],[-88.564567,47.126451],[-88.564653,47.126339],[-88.564665,47.126052],[-88.564616,47.125957],[-88.564385,47.125853],[-88.56408,47.125853],[-88.563764,47.125887],[-88.563447,47.125974],[-88.563167,47.126096],[-88.562996,47.126252],[-88.562984,47.126347],[-88.563069,47.126564]]]}}]};
   var AREA={type:'Feature',geometry:{type:'Polygon',coordinates:[[[-88.55748,47.12784],[-88.55748,47.1239],[-88.56626,47.1239],[-88.56626,47.12784],[-88.55748,47.12784]]]}};
   function fail(){ msg.hidden=false; msg.innerHTML='<p>The 3D view could not load here. It needs an internet connection and runs on the live website.</p>'; }
   function load(){
@@ -906,7 +909,8 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
     document.head.appendChild(sc);
   }
   function init(){
-    var map=new maplibregl.Map({container:el,center:VIEW.center,zoom:VIEW.zoom,pitch:VIEW.pitch,bearing:VIEW.bearing,maxPitch:80,cooperativeGestures:true,attributionControl:{compact:true},
+    var START={center:[-86.3,44.9],zoom:5.3,pitch:0,bearing:0};
+    var map=new maplibregl.Map({container:el,center:START.center,zoom:START.zoom,pitch:START.pitch,bearing:START.bearing,maxPitch:80,cooperativeGestures:true,attributionControl:{compact:true},
       style:{version:8,
         sources:{
           sat:{type:'raster',tiles:['https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}'],tileSize:256,maxzoom:16,attribution:'Imagery: <a href="https://www.usgs.gov/programs/national-geospatial-program/national-map" target="_blank" rel="noopener">USGS The National Map</a>'},
@@ -932,10 +936,10 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
     map.on('style.load',function(){ msg.hidden=true; });
     var okTiles=0; map.on('sourcedata',function(e){ if(e.sourceId==='dem' && e.tile) okTiles++; });
     map.on('error',function(e){ if(window.console) console.warn('map',e && e.error); });
-    setTimeout(function(){ if(!okTiles) fail(); },12000);
+    setTimeout(function(){ if(!okTiles && !ready) fail(); },15000);
     var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches, spinning=true, btn=document.getElementById('map-spin'), userPaused=false, resumeT=null;
     var ready=false, last=0;
-    function frame(t){ if(!spinning) return; if(ready && last && !map.isMoving()){ map.setBearing(map.getBearing()-(t-last)*(still?0.0015:0.004)); } last=t; requestAnimationFrame(frame); }
+    function frame(t){ if(!spinning) return; if(ready && last && !map.isMoving() && !flying && flown){ map.setBearing(map.getBearing()-(t-last)*(still?0.0015:0.004)); } last=t; requestAnimationFrame(frame); }
     var shimmerOn=false;
     var lastS=0;
     function shimmer(t){
@@ -951,8 +955,19 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
     }
     function startShimmer(){ if(shimmerOn) return; shimmerOn=true; requestAnimationFrame(shimmer); }
     function setSpin(on){ var was=spinning; spinning=on; btn.textContent=on?'Pause rotation':'Rotate'; btn.setAttribute('aria-pressed',on?'true':'false'); if(on && !was){ last=0; requestAnimationFrame(frame); } }
-    map.once('style.load',function(){ ready=true; startShimmer();
-      SLAG.features.forEach(function(f){ var r=f.geometry.coordinates[0], x=0, y=0; r.forEach(function(c){x+=c[0];y+=c[1];}); var lab=document.createElement('div'); lab.className='slag-tag'; lab.textContent=f.properties.name; new maplibregl.Marker({element:lab,anchor:'bottom'}).setLngLat([x/r.length,y/r.length]).addTo(map); });
+    function tagVis(){ el.classList.toggle('close', map.getZoom()>=14.6); }
+    map.on('zoom',tagVis);
+    var flying=false;
+    var TERRAIN={source:'dem',exaggeration:2.5};
+    function flyIn(){ flying=true; userPaused=false; map.setTerrain(null); map.jumpTo(START); tagVis();
+      map.flyTo(Object.assign({},VIEW,{duration:still?2500:5500,curve:1.6,essential:true}));
+      map.once('moveend',function(){ flying=false; map.setTerrain(TERRAIN); tagVis(); }); }
+    var flown=false;
+    function maybeFly(){ if(flown||!ready) return; var r=el.getBoundingClientRect(); if(r.top<window.innerHeight*0.75 && r.bottom>window.innerHeight*0.25){ flown=true; flyIn(); } }
+    window.addEventListener('scroll',maybeFly,{passive:true});
+    document.getElementById('map-replay').addEventListener('click',function(){ flyIn(); setSpin(true); });
+    map.once('style.load',function(){ ready=true; startShimmer(); maybeFly();
+      SLAG.features.forEach(function(f){ var r=f.geometry.coordinates[0], x=0, y=0; r.forEach(function(c){x+=c[0];y+=c[1];}); var lab=document.createElement('div'); lab.className='slag-tag'; lab.innerHTML='<b>'+f.properties.name+'</b><span>'+f.properties.wt+'</span><span>'+f.properties.tons+'</span>'; new maplibregl.Marker({element:lab,anchor:'bottom'}).setLngLat([x/r.length,y/r.length]).addTo(map); });
     });
     function pauseForUser(){ if(userPaused) return; if(spinning) setSpin(false); clearTimeout(resumeT); resumeT=setTimeout(function(){ if(!userPaused) setSpin(true); },5000); }
     ['mousedown','touchstart','wheel'].forEach(function(ev){ el.addEventListener(ev,pauseForUser,{passive:true}); });
