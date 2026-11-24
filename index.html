@@ -588,10 +588,22 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
           <rect x="540" y="272" width="200" height="88" fill="#3f7f95"/>
           <rect id="ro-sheen" x="540" y="272" width="200" height="3" fill="#bfe3ee" opacity=".7"/>
           <ellipse id="ro-plumeE" cx="575" cy="290" rx="0" ry="0" fill="url(#ro-plume)" clip-path="url(#ro-water)"/>
+          <g id="ro-weed" clip-path="url(#ro-water)"></g>
           <g id="ro-fish" clip-path="url(#ro-water)"></g>
           <path d="M0 250 H500 C528 250 545 260 562 272 L562 360 H0Z" fill="#6f7a52"/>
           <path d="M0 262 H520 L548 276 L548 360 H0Z" fill="#5d6744" opacity=".6"/>
           <path d="M728 360 V274 C742 266 760 263 800 263 V360Z" fill="#6f7a52"/>
+          <rect id="ro-ice" x="557" y="270" width="173" height="11" fill="#e3f1f5" stroke="#ffffff" stroke-width="1" opacity="0"/>
+          <g id="ro-shanty" opacity="0">
+            <line x1="666" y1="272" x2="666" y2="322" stroke="#2b2b2b" stroke-width=".8"/>
+            <rect x="632" y="236" width="46" height="36" fill="#8f3b26"/>
+            <path d="M627 238 L655 220 L683 238Z" fill="#4a2b1f"/>
+            <rect x="642" y="246" width="10" height="9" fill="#f3d58a"/>
+            <rect x="660" y="250" width="11" height="22" fill="#5b2618"/>
+            <rect x="670" y="222" width="5" height="12" fill="#3a3a3a"/>
+            <g id="ro-smoke" fill="#dfe6e4"><circle cx="673" cy="214" r="4"/><circle cx="678" cy="205" r="5"/><circle cx="684" cy="195" r="6"/></g>
+          </g>
+          <g id="ro-plants"></g>
           <path id="ro-run" d="M415 251 C450 254 480 252 505 254 C530 257 548 266 568 280" fill="none" stroke="url(#ro-oil)" stroke-width="7" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
           <path d="M120 252 C150 210 190 150 245 118 C270 104 292 106 312 124 C350 158 392 214 430 252Z" fill="url(#ro-pile)"/>
           <path d="M170 252 C200 222 215 196 238 186 L262 196 C300 210 330 238 350 252Z" fill="#0e1110" opacity=".55"/>
@@ -621,7 +633,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
         <rect id="ro-fade" width="800" height="360" fill="#cfdad6" opacity="0" pointer-events="none"/>
       </svg>
       <div class="runoff-bar">
-        <ol class="runoff-steps" aria-hidden="true"><li>Rain</li><li>Snow</li><li>Freeze &amp; thaw</li><li>Runoff</li><li>Fish &amp; people</li></ol>
+        <ol class="runoff-steps" aria-hidden="true"><li>Rain</li><li>Snow</li><li>Freeze &amp; thaw</li><li>Runoff</li><li>Plants, fish &amp; people</li></ol>
         <button type="button" class="runoff-btn" id="runoff-btn" aria-pressed="false">Pause</button>
         <p class="runoff-cap" id="runoff-cap">Rain soaks into the pile and starts to pull metals out of the rock.</p>
       </div>
@@ -629,7 +641,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
 
     <div class="col stack" style="margin-top:3rem">
       <h3>What these metals do to people</h3>
-      <p>Some metals, like copper and zinc, are needed in tiny amounts. Others are harmful at almost any level. These are the EPA drinking water limits for the metals found in the slag, with the health effects linked to long-term exposure.</p>
+      <p>Some metals, like copper and zinc, are needed in tiny amounts. Others are harmful at almost any level. These are the EPA drinking water limits for the metals found in the slag**, with the health effects linked to long-term exposure.</p>
     </div>
     <div class="table-scroll">
       <table>
@@ -643,14 +655,8 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
         </tbody>
       </table>
     </div>
-    <p class="small muted" style="margin-top:.6rem">* Under the EPA's 2024 lead rule. The EPA's health goal for lead is zero.</p>
+    <p class="small muted" style="margin-top:.6rem">* Under the EPA's 2024 lead rule. The EPA's health goal for lead is zero.<br>** No one has tested whether the Quincy slag is leaching into the Portage right now. The research says it's likely, and testing the slag and nearby water is the first step of this project.</p>
 
-    <div class="callout col">
-      <p><b>Protected water.</b> The Portage Lake canal, also called the Keweenaw Waterway, is a "connecting water" of Lake Superior. Michigan's water quality standards (Part 4, Rule 57) set strict limits on toxic substances, including heavy metals, entering it. <a href="#waterway">What that protection means ↓</a></p>
-    </div>
-    <div class="callout col" style="border-left-color:var(--verdigris)">
-      <p><b style="color:var(--verdigris)">What we don't know yet.</b> No one has tested whether the Quincy slag is leaching into the Portage right now. The research above says it's likely. Getting the slag and nearby water tested is the first step of this project.</p>
-    </div>
   </div>
 </section>
 
@@ -1180,7 +1186,7 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
   function r(a,b,t){return Math.max(0,Math.min(1,(t-a)/(b-a)))}
   function ez(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2}
   var seed=7; function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
-  var drops=[],flakes=[],fish=[],chunks=[];
+  var drops=[],flakes=[],fish=[],chunks=[],plants=[],weeds=[];
   for(var i=0;i<110;i++){drops.push({x:rnd()*840-20,y:rnd()*360,v:420+rnd()*200,e:el('line',{x1:0,y1:0,x2:-4,y2:14},rain)})}
   for(i=0;i<60;i++){flakes.push({x:rnd()*800,y:rnd()*360,v:30+rnd()*30,s:rnd()*6,r:1.4+rnd()*1.8,e:el('circle',{r:2},snow)})}
   [[600,312,1],[660,330,-1],[700,300,1]].forEach(function(f,k){
@@ -1193,11 +1199,22 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
     var s=c[2], g=el('polygon',{points:(-s)+','+(s*.3)+' '+(-s*.4)+','+(-s)+' '+(s*.8)+','+(-s*.6)+' '+s+','+(s*.5)+' '+(s*.1)+','+s},chunkG);
     chunks.push({x:c[0],y:c[1],tx:505+k*12,ty:254+k*2.5,g:g,k:k});
   });
+  [[448,251,1],[472,252,.8],[492,253,1.1],[518,256,.9],[742,268,1],[768,264,.8],[792,263,1.1],[150,252,.9],[96,251,1]].forEach(function(q,k){
+    var g=el('g',{transform:'translate('+q[0]+','+q[1]+')'},$('ro-plants')), s=q[2];
+    var b=el('path',{d:'M0 0 C-2 -8 -7 -14 -9 -18 C-4 -14 -1 -10 0 -4 C1 -12 1 -18 2 -24 C3 -16 3 -9 2 -3 C4 -9 8 -13 11 -15 C8 -10 5 -6 3 0Z',fill:'#4f8a3a'},g);
+    plants.push({x:q[0],y:q[1],s:s,b:b,g:g,k:k});
+  });
+  [[556,1],[580,.8],[612,1.1],[648,.9],[690,1],[722,.85]].forEach(function(q,k){
+    var g=el('g',{},$('ro-weed'));
+    var b=el('path',{d:'M0 0 C-6 -14 6 -24 -2 -38 C-8 -48 4 -56 0 -66 C6 -56 0 -48 4 -38 C10 -24 -2 -14 3 0Z',fill:'#3f8a5a'},g);
+    weeds.push({x:q[0],s:q[1],b:b,g:g,k:k});
+  });
+  function mix(a,b,u){return 'rgb('+a.map(function(v,i){return Math.round(v+(b[i]-v)*u)}).join(',')+')'}
   var caps=['Rain soaks into the pile and starts to pull metals out of the rock.',
-    'Snow piles up and melts into the cracks of the slag.',
+    'Snow piles up on the slag and the bay freezes over. When it thaws, meltwater seeps into the cracks.',
     'Meltwater freezes and expands, cracking the rock into smaller pieces. Smaller pieces mean more surface for metals to leach from.',
     'Heavy rain washes the broken slag and metal-laden runoff downhill into the water.',
-    'Metals build up in the water. Fish die, and people who fish and swim here are exposed.'];
+    'Metals build up in the water. Plants on shore and underwater die, fish die, and people who fish and swim here get sick.'];
   var cur=-1;
   function stage(t){return t<5?0:t<8.5?1:t<10.5?2:t<13?3:4}
   function frame(t){
@@ -1242,6 +1259,18 @@ footer{padding-block:2.5rem;border-top:1px solid var(--line);font-size:.88rem;co
       var g=Math.round(224-die*90), gg=Math.round(138-die*10*0), bb=Math.round(79+die*55);
       f.b.setAttribute('fill','rgb('+g+','+Math.round(138+die*(140-138))+','+bb+')');
     });
+    var dead=ez(r(13.4,15.2,t));
+    plants.forEach(function(q){var d=ez(r(13.4+q.k*.08,15+q.k*.08,t));
+      q.g.setAttribute('transform','translate('+q.x+','+q.y+') scale('+q.s+','+(q.s*(1-d*.5)).toFixed(2)+') rotate('+(d*(q.k%2?18:-18)).toFixed(0)+')');
+      q.b.setAttribute('fill',mix([79,138,58],[140,110,60],d));});
+    weeds.forEach(function(q){var d=ez(r(13+q.k*.12,14.8+q.k*.12,t)), sw=Math.sin(t*1.3+q.k)*8*(1-d*.8);
+      q.g.setAttribute('transform','translate('+q.x+',362) scale('+q.s+','+(q.s*(1-d*.55)).toFixed(2)+') skewX('+(sw+d*14).toFixed(1)+')');
+      q.b.setAttribute('fill',mix([63,138,90],[110,90,55],d));});
+    var ice=r(5.6,6.6,t)*(1-r(8.8,10,t)), sh=ez(r(5.8,6.6,t)*(1-r(8.6,9.4,t)));
+    $('ro-ice').setAttribute('opacity',(ice*.95).toFixed(2));
+    $('ro-shanty').setAttribute('opacity',sh.toFixed(2));
+    $('ro-smoke').setAttribute('transform','translate(0,'+(-(t*6)%8).toFixed(1)+')');
+    $('ro-person').setAttribute('opacity',(1-sh).toFixed(2));
     var sick=ez(r(14.6,15.8,t));
     $('ro-body').setAttribute('transform','rotate('+(sick*14).toFixed(1)+' 764 264)');
     $('ro-head').setAttribute('fill',sick>.05?'rgb('+Math.round(224-sick*60)+','+Math.round(179+sick*10)+','+Math.round(143-sick*40)+')':'#e0b38f');
